@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623004683139",
+    "project_id": "ecommerce-firebase-ai-app",
+    "storage_bucket": "ecommerce-firebase-ai-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623004683139:android:71878716678f354bfe04b6",
+        "android_client_info": {
+          "package_name": "com.omarkarimli.myecommerceapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOYHQm8GgpLCNePvRDxEPE-UYvvXzZdtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

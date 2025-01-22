@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyEcommerceApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+<!--        <item name="colorPrimary">@color/primary</item>-->
+
+    </style>
+
+    <style name="Theme.MyEcommerceApp" parent="Base.Theme.MyEcommerceApp" />
+
+    <style name="SpecificCornerRounded">
+        <item name="backgroundTint">@color/red</item>
+        <item name="cornerSizeTopLeft">75dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeBottomRight">75dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+    </style>
+
+</resources>

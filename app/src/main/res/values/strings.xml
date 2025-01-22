@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MyEcommerceApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="google_sign_in">GoogleSignIn</string>
+    <string name="facebook_sign_in">FacebookSignIn</string>
+    <string name="search">Search</string>
+    <string name="category">Category</string>
+    <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="language">Language</string>
+    <string name="about_us">About us</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="profile">Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="helper_text">Minimum 6 character</string>
+    <string name="email_suffix">\@gmail.com</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="log_out">Log out</string>
+    <string name="bookmarks">Bookmarks</string>
+</resources>
