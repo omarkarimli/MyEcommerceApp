@@ -67,9 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp"
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
-            app:endIconMode="password_toggle"
-            app:helperTextEnabled="true"
-            app:helperText="@string/helper_text" >
+            app:endIconMode="password_toggle" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_password"
@@ -116,10 +114,10 @@
             <Button
                 android:id="@+id/signInButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:text="@string/sign_in"
-                android:backgroundTint="@color/secondary"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+                android:backgroundTint="@color/on_tertiary_container"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

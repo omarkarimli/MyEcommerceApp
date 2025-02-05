@@ -2,82 +2,62 @@
     {
         "id": 0,
         "title": "Solid Men Multicolor Track Pants",
-        "description": "Yorker trackpants made from 100% rich combed cotton giving it a rich look.Designed for Comfort,Skin friendly fabric,itch-free waistband & great for all year round use Proudly made in India", 
-        "brand": "York", 
+        "description": "Yorker trackpants made from 100% rich combed cotton giving it a rich look.Designed for Comfort,Skin friendly fabric,itch-free waistband & great for all year round use Proudly made in India",
+        "brand": "York",
         "category": "Clothing and Accessories",
         "averageRating": 3.9,
-        "creationDate": "02/10/2021, 20:11:51", 
+        "creationDate": "02/10/2021, 20:11:51",
         "seller": "Shyam Enterprises",
-        "discount": 30, 
+        "discount": 30,
         "originalPrice": 128,
         "outOfStock": false,
         "images": [
-            "https://5.imimg.com/data5/SELLER/Default/2023/1/BS/HZ/LL/43967183/black-2-500x500.jpg", 
+            "https://5.imimg.com/data5/SELLER/Default/2023/1/BS/HZ/LL/43967183/black-2-500x500.jpg",
             "https://5.imimg.com/data5/SELLER/Default/2023/1/XS/UH/FZ/43967183/maroon-2-500x500.jpg"
-        ], 
-        "productDetails": [
-            {
-                "styleCode": "1005COMBO2"
-            }, 
-            {
-                "closure": "Elastic"
-            }, 
-            {
-                "pockets": "Side pockets"
-            }, 
-            {
-                "fabric": "Cotton Blend"
-            }, 
-            {
-                "pattern": "Solid"
-            }, 
-            {
-                "color": "Multicolor"
-            },
-            {
-                "gender": "Men"
-            }
-        ]
+        ],
+        "productDetails": {
+            "styleCode": "1005COMBO2",
+            "closure": "Elastic",
+            "pockets": "Side pockets",
+            "fabric": "Cotton Blend",
+            "pattern": "Solid",
+            "color": [
+                "#FF5733",
+                "#33FF57",
+                "#3357FF"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 1,
         "title": "Cinnamon Women Trousers",
-        "description": "Yorker trackpants made from 100% rich combed cotton giving it a rich look.Designed for Comfort,Skin friendly fabric,itch-free waistband & great for all year round use Proudly made in India", 
-        "brand": "York", 
+        "description": "Yorker trackpants made from 100% rich combed cotton giving it a rich look.Designed for Comfort,Skin friendly fabric,itch-free waistband & great for all year round use Proudly made in India",
+        "brand": "York",
         "category": "Clothing and Accessories",
         "averageRating": 3.9,
-        "creationDate": "02/10/2021, 20:11:51", 
+        "creationDate": "02/10/2021, 20:11:51",
         "seller": "Shyam Enterprises",
-        "discount": 30, 
+        "discount": 30,
         "originalPrice": 46,
         "outOfStock": false,
         "images": [
-            "https://www.omnes.com/cdn/shop/products/Cinnamon-trousers-beige_1.jpg?v=1673277191&width=1536", 
+            "https://www.omnes.com/cdn/shop/products/Cinnamon-trousers-beige_1.jpg?v=1673277191&width=1536",
             "https://www.omnes.com/cdn/shop/products/Cinnamon-trousers-beige_3.jpg?crop=center&height=2048&v=1712833438&width=1536"
-        ], 
-        "productDetails": [
-            {
-                "styleCode": "1005COMBO2"
-            }, 
-            {
-                "closure": "Elastic"
-            }, 
-            {
-                "pockets": "Side pockets"
-            }, 
-            {
-                "fabric": "Cotton Blend"
-            }, 
-            {
-                "pattern": "Solid"
-            }, 
-            {
-                "color": "Multicolor"
-            },
-            {
-                "gender": "Women"
-            }
-        ]
+        ],
+        "productDetails": {
+            "styleCode": "1005COMBO2",
+            "closure": "Elastic",
+            "pockets": "Side pockets",
+            "fabric": "Cotton Blend",
+            "pattern": "Solid",
+            "color": [
+                "#FF5733",
+                "#33FF57",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 2,
@@ -95,15 +75,18 @@
             "https://lydiaelisemillen.com/wp-content/uploads/2023/06/DSC0156-min.jpg",
             "https://i.pinimg.com/736x/5b/e8/fd/5be8fd206f179e0225c1aa8e9316ff37.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "3010FLORAL"},
-            {"closure": "Pull-On"},
-            {"pockets": "No pockets"},
-            {"fabric": "Cotton"},
-            {"pattern": "Floral"},
-            {"color": "Green"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "3010FLORAL",
+            "closure": "Pull-On",
+            "pockets": "No pockets",
+            "fabric": "Cotton",
+            "pattern": "Floral",
+            "color": [
+                "#FF5733",
+                "#000000"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 3,
@@ -121,15 +104,17 @@
             "https://petrolindustries.com/cdn/shop/files/SEAHAM-CLASSIC-5855_FMC_3224cb75-5abb-441c-a3fa-f500181f292a.jpg?v=1733926647&width=1500",
             "https://img01.ztat.net/article/spp-media-p1/54c98bbf858a4c4ca0c097d9d9b7ae9a/1d768cf91d4240629eabbd3829af1e52.jpg?imwidth=762"
         ],
-        "productDetails": [
-            {"styleCode": "2001SLIMFIT"},
-            {"closure": "Button and Zip"},
-            {"pockets": "Five pockets"},
-            {"fabric": "Denim"},
-            {"pattern": "Solid"},
-            {"color": "Blue"},
-            {"gender": "Men"}
-        ]
+        "productDetails": {
+            "styleCode": "2001SLIMFIT",
+            "closure": "Button and Zip",
+            "pockets": "Five pockets",
+            "fabric": "Denim",
+            "pattern": "Solid",
+            "color": [
+                "#2343FF"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 4,
@@ -147,15 +132,19 @@
             "https://roolee.com/cdn/shop/products/7W4A5528_ce972082-00f0-47c1-8f5b-a1ca884fe337.jpg?v=1652826335",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1_7iwCzx2-eVkIbXMmIjoqsLmnoniOh2MCC6Zij9mU-7vDr6SmpgQExDQq4k6K9FJztA&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "3002FLORAL"},
-            {"closure": "Pull-On"},
-            {"pockets": "No pockets"},
-            {"fabric": "Cotton"},
-            {"pattern": "Floral"},
-            {"color": "Yellow"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "3002FLORAL",
+            "closure": "Pull-On",
+            "pockets": "No pockets",
+            "fabric": "Cotton",
+            "pattern": "Floral",
+            "color": [
+                "#000000",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 5,
@@ -173,15 +162,17 @@
             "https://fausto.in/cdn/shop/files/FST_FJAMC-17001_SKY_1_b910105f-cc1f-4105-a531-5a77b8985c33_1200x1200.jpg?v=1723185817",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZtPbekGDmCkC5GiDgU5s7IDEWqQerffDgVOjpIjK5DuV_WhG2N5qOi1YeOEaStp5viA&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "4001SPORT"},
-            {"closure": "Lace-Up"},
-            {"Material": "Mesh"},
-            {"Sole Material": "Rubber"},
-            {"pattern": "Solid"},
-            {"color": "Black"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "4001SPORT",
+            "closure": "Lace-Up",
+            "Material": "Mesh",
+            "Sole Material": "Rubber",
+            "pattern": "Solid",
+            "color": [
+                "#CC2233"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 6,
@@ -199,14 +190,17 @@
             "https://www.civowatch.com/cdn/shop/files/DSC01312_1200x1200.jpg?v=1689919240",
             "https://ae01.alicdn.com/kf/Sfd647941a4cf4b38adea151909be6682y/POEDAGAR-Luxury-Woman-Wristwatch-Elegant-Waterproof-Stainless-Steel-Watch-for-Ladies-Dress-Diamond-Quartz-Women-s.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "5001CLASSIC"},
-            {"closure": "Buckle"},
-            {"Material": "Stainless Steel"},
-            {"pattern": "Solid"},
-            {"color": "Silver"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "5001CLASSIC",
+            "closure": "Buckle",
+            "Material": "Stainless Steel",
+            "pattern": "Solid",
+            "color": [
+                "#c0c0c0",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 7,
@@ -224,14 +218,17 @@
             "https://i.etsystatic.com/14420727/r/il/be3b68/2787266803/il_570xN.2787266803_bfbb.jpg",
             "https://i.etsystatic.com/8666319/r/il/936547/6003464394/il_1080xN.6003464394_axtb.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "6001BACKPACK"},
-            {"closure": "Zipper"},
-            {"Material": "Canvas"},
-            {"pattern": "Solid"},
-            {"color": "Brown"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "6001BACKPACK",
+            "closure": "Zipper",
+            "Material": "Canvas",
+            "pattern": "Solid",
+            "color": [
+                "#FFFFFF",
+                "#FF5733"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 8,
@@ -249,14 +246,18 @@
             "https://baccabucci.com/cdn/shop/products/01-_MG_1052copy_1_1800x.jpg?v=1675408857",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbMHSVFQMH_-ToDPEvXywGBAWyfAbza6WcoUxQG5BSO-IjNUDkkwFmT4vsyL3gRPntavk&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "7001LEATHER"},
-            {"closure": "Lace-Up"},
-            {"Material": "Leather"},
-            {"pattern": "Solid"},
-            {"color": "Black"},
-            {"gender": "Men"}
-        ]
+        "productDetails": {
+            "styleCode": "7001LEATHER",
+            "closure": "Lace-Up",
+            "Material": "Leather",
+            "pattern": "Solid",
+            "color": [
+                "#0033CC",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 9,
@@ -274,14 +275,18 @@
             "https://cdn.shopify.com/s/files/1/2446/8477/products/SportTankBlack-BlackMarlA2A8Q-BBQF29.A_a65cf481-1c35-45cb-ae10-f5a5dca8e47b.jpg?v=1662468376",
             "https://zeuzfitness.com/cdn/shop/files/HEREN-KLEDING-08.jpg?v=1702647547&width=2450"
         ],
-        "productDetails": [
-            {"styleCode": "8001TANK"},
-            {"closure": "Pull-On"},
-            {"fabric": "Polyester"},
-            {"pattern": "Solid"},
-            {"color": "Gray"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "8001TANK",
+            "closure": "Pull-On",
+            "fabric": "Polyester",
+            "pattern": "Solid",
+            "color": [
+                "#000000",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 10,
@@ -299,13 +304,17 @@
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl3ZjXdbzluom0ySoJxFJodeX70w0JDia57g&s",
             "https://www.aeshaane.com/cdn/shop/files/Aeshaane_12-12-20232199Large_720x.jpg?v=1705150254"
         ],
-        "productDetails": [
-            {"styleCode": "9001SCARF"},
-            {"Material": "Silk"},
-            {"pattern": "Printed"},
-            {"color": "Multicolor"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "9001SCARF",
+            "Material": "Silk",
+            "pattern": "Printed",
+            "color": [
+                "#FF5733",
+                "#33FF57",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 11,
@@ -323,14 +332,17 @@
             "https://www.yellowclothing.net/cdn/shop/files/DSC3056.jpg?v=1717481116",
             "https://m.media-amazon.com/images/I/51o9NRdBZHL._AC_UY1100_.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "10001TEE"},
-            {"closure": "Pull-On"},
-            {"fabric": "Cotton"},
-            {"pattern": "Solid"},
-            {"color": "White"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "10001TEE",
+            "closure": "Pull-On",
+            "fabric": "Cotton",
+            "pattern": "Solid",
+            "color": [
+                "#0000CC",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 12,
@@ -348,13 +360,16 @@
             "https://m.media-amazon.com/images/I/51BuyYwXEnL._AC_SY1000_.jpg",
             "https://img.fruugo.com/product/5/01/549296015_0340_0340.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "11001CAP"},
-            {"Material": "Wool"},
-            {"pattern": "Solid"},
-            {"color": "Navy Blue"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "11001CAP",
+            "Material": "Wool",
+            "pattern": "Solid",
+            "color": [
+                "#000080",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 13,
@@ -372,13 +387,17 @@
             "https://cdn.tom-tailor.com/img/560_745/6110010TG10_9000_7.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM9Opc5vz75ua4TnyxxH7HlJi5RYABm8OXvZJAAu_c7jeFvBJCjHim1qpOdpASIiIDPFs&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "12001BELT"},
-            {"Material": "Leather"},
-            {"pattern": "Solid"},
-            {"color": "Brown"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "12001BELT",
+            "Material": "Leather",
+            "pattern": "Solid",
+            "color": [
+                "#A5A2A5",
+                "#FF5733",
+                "#C0C3C0"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 14,
@@ -396,14 +415,17 @@
             "https://www.laurenastondesigns.com/wp-content/uploads/2020/01/button-knit-up-duck-egg-2.jpg",
             "https://images4-f.ravelrycache.com/uploads/LaurenAstonDesign/1002279157/Cosy-Up-Cardigan-1_small2.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "13001KNIT"},
-            {"closure": "Buttons"},
-            {"fabric": "Wool Blend"},
-            {"pattern": "Solid"},
-            {"color": "Cream"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "13001KNIT",
+            "closure": "Buttons",
+            "fabric": "Wool Blend",
+            "pattern": "Solid",
+            "color": [
+                "#FDF0FC",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 15,
@@ -421,14 +443,18 @@
             "https://m.media-amazon.com/images/I/61Ueruq7ptL._AC_UY1000_.jpg",
             "https://m.media-amazon.com/images/I/61xECW8XDnL._AC_UY1000_.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "14001HOODIE"},
-            {"closure": "Pull-On"},
-            {"fabric": "Cotton Blend"},
-            {"pattern": "Graphic"},
-            {"color": "Black"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "14001HOODIE",
+            "closure": "Pull-On",
+            "fabric": "Cotton Blend",
+            "pattern": "Graphic",
+            "color": [
+                "#000000",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 16,
@@ -446,13 +472,15 @@
             "https://sylvi.in/cdn/shop/files/Sylvi_NitroNeon_Green_PU_Man_Watch_Model_Image_Explore_Best_Watches_for_Men_800x1000_312ad816-6bc3-4511-a015-99d435b0fe5d_1000x.webp?v=1734668572",
             "https://sylvi.in/cdn/shop/files/Sylvi_NitroNeon_Yellow_PU_Man_Watch_Model_Image_Explore_Best_Watches_for_Men_800x1000_e456963e-566d-4a4e-b8e0-77e19bd90b1a_1080x.webp?v=1734668575"
         ],
-        "productDetails": [
-            {"styleCode": "15001DIGITAL"},
-            {"Material": "Silicone"},
-            {"pattern": "Solid"},
-            {"color": "Blue"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "15001DIGITAL",
+            "Material": "Silicone",
+            "pattern": "Solid",
+            "color": [
+                "#FFFFFF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 17,
@@ -470,13 +498,16 @@
             "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/101411s.jpg?im=Resize,width=750",
             "https://www.levelshoes.com/media/catalog/product/cache/d6b308721eea44dce854000e2ac7b2ba/0/r/0rb3025-w3234_2.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "16001SUNGLASSES"},
-            {"Material": "Metal Frame"},
-            {"pattern": "Solid"},
-            {"color": "Gold"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "16001SUNGLASSES",
+            "Material": "Metal Frame",
+            "pattern": "Solid",
+            "color": [
+                "#FFFFFF",
+                "#000000"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 18,
@@ -494,14 +525,17 @@
             "https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/m/29/fe605fb6-179b-43c5-a193-00dbb7ca1263.jpg",
             "https://i.pinimg.com/736x/25/28/0a/25280a58ca3eb0b4b96193285885f83d.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "P1001"},
-            {"closure": "Button"},
-            {"fabric": "Cotton"},
-            {"pattern": "Solid"},
-            {"color": "Navy Blue"},
-            {"gender": "Men"}
-        ]
+        "productDetails": {
+            "styleCode": "P1001",
+            "closure": "Button",
+            "fabric": "Cotton",
+            "pattern": "Solid",
+            "color": [
+                "#000080",
+                "#FF5733"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 19,
@@ -519,14 +553,18 @@
             "https://shop.mango.com/assets/rcs/pics/static/T4/fotos/S/47000155_TM.jpg?imwidth=2048&imdensity=1&ts=1687194195774",
             "https://img.abercrombie.com/is/image/anf/KIC_155-1264-0699-278_model1.jpg?policy=product-large"
         ],
-        "productDetails": [
-            {"styleCode": "J2001"},
-            {"closure": "Zipper and Button"},
-            {"fabric": "Denim"},
-            {"pattern": "Solid"},
-            {"color": "Black"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "J2001",
+            "closure": "Zipper and Button",
+            "fabric": "Denim",
+            "pattern": "Solid",
+            "color": [
+                "#000000",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 20,
@@ -544,14 +582,18 @@
             "https://cdn.ssactivewear.com/Images/Style/395_fm.jpg",
             "https://assets.ajio.com/medias/sys_master/root/20241103/UTeg/6727298c260f9c41e8b30d58/-473Wx593H-700690671-green-MODEL.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "H3001"},
-            {"closure": "Pull-On"},
-            {"fabric": "Fleece"},
-            {"pattern": "Solid"},
-            {"color": "Grey"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "H3001",
+            "closure": "Pull-On",
+            "fabric": "Fleece",
+            "pattern": "Solid",
+            "color": [
+                "#FFFFFF",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 21,
@@ -569,14 +611,18 @@
             "https://thenmozhidesigns.com/cdn/shop/files/NIJU9947.jpg?v=1704259015&width=2048",
             "https://thenmozhidesigns.com/cdn/shop/files/NIJU0149.jpg?v=1704256876&width=987"
         ],
-        "productDetails": [
-            {"styleCode": "K4001"},
-            {"closure": "Button"},
-            {"fabric": "Cotton"},
-            {"pattern": "Embroidered"},
-            {"color": "White"},
-            {"gender": "Men"}
-        ]
+        "productDetails": {
+            "styleCode": "K4001",
+            "closure": "Button",
+            "fabric": "Cotton",
+            "pattern": "Embroidered",
+            "color": [
+                "#FFCF21",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 22,
@@ -594,14 +640,17 @@
             "https://m.media-amazon.com/images/I/71G1ou6-UJS._AC_UY1100_.jpg",
             "https://i5.walmartimages.com/seo/Black-Friday-Deal30Clear-asdoklhq-Womens-Plus-Size-Clearance-Dresses-Women-V-neck-Sleexeless-Print-Open-Back-Casual-Halter-Mid-Calf-Long-Dress_11775a75-c118-4619-a577-16f6f081cb43.9f7dbbe3e2182b2cef9d50dbfedd0e6d.jpeg"
         ],
-        "productDetails": [
-            {"styleCode": "D5001"},
-            {"closure": "Zipper"},
-            {"fabric": "Chiffon"},
-            {"pattern": "Solid"},
-            {"color": "Red"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "D5001",
+            "closure": "Zipper",
+            "fabric": "Chiffon",
+            "pattern": "Solid",
+            "color": [
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 23,
@@ -619,14 +668,17 @@
             "https://www.intermod.in/cdn/shop/products/herringbone_jacket_6_1000x.jpg?v=1551434873",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrJSThyjoG-y4bArIuXUGOI4Ey9qB4rlXgbY_9a0Nk0NVBH11blwn0wmbP_WovjaHRggY&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "B6001"},
-            {"closure": "Button"},
-            {"fabric": "Wool Blend"},
-            {"pattern": "Solid"},
-            {"color": "Charcoal"},
-            {"gender": "Men"}
-        ]
+        "productDetails": {
+            "styleCode": "B6001",
+            "closure": "Button",
+            "fabric": "Wool Blend",
+            "pattern": "Solid",
+            "color": [
+                "#36454F",
+                "#00F012"
+            ],
+            "gender": "Men"
+        }
     },
     {
         "id": 24,
@@ -644,14 +696,18 @@
             "https://www.lavanyathelabel.com/cdn/shop/files/555_2_1500x.jpg?v=1735980263",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7DUqXRgLOEaZxP9BC1vT9YdrlMtzWP6UCO8K04utTYrXAnaxsL2PU3MXN77mpmW83Hl8&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "S7001"},
-            {"closure": "Elastic Waistband"},
-            {"fabric": "Polyester"},
-            {"pattern": "Floral"},
-            {"color": "Yellow"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "S7001",
+            "closure": "Elastic Waistband",
+            "fabric": "Polyester",
+            "pattern": "Floral",
+            "color": [
+                "#000000",
+                "#FF5733",
+                "#3357FF"
+            ],
+            "gender": "Women"
+        }
     },
     {
         "id": 25,
@@ -669,14 +725,16 @@
             "https://www.bolf.eu/eng_pl_Mens-Denim-Jacket-Black-Bolf-200A-92822_4.jpg",
             "https://www.bolf.eu/eng_pl_Mens-Denim-Jacket-Inky-Bolf-200A-93012_1.jpg"
         ],
-        "productDetails": [
-            {"styleCode": "J8001"},
-            {"closure": "Button"},
-            {"fabric": "Denim"},
-            {"pattern": "Solid"},
-            {"color": "Light Blue"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "J8001",
+            "closure": "Button",
+            "fabric": "Denim",
+            "pattern": "Solid",
+            "color": [
+                "#3357FF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 26,
@@ -694,14 +752,17 @@
             "https://m.media-amazon.com/images/I/91be-ix81eL._AC_UY350_.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7prmuvJMtRnIXaJlXFp_PLFRopTc9DBRTXNaUhWvcT5PVRlGolN5Lxa_4wAEBKfgqI90&usqp=CAU"
         ],
-        "productDetails": [
-            {"styleCode": "T9001"},
-            {"closure": "Zipper"},
-            {"fabric": "Polyester"},
-            {"pattern": "Solid"},
-            {"color": "Black/Grey"},
-            {"gender": "Unisex"}
-        ]
+        "productDetails": {
+            "styleCode": "T9001",
+            "closure": "Zipper",
+            "fabric": "Polyester",
+            "pattern": "Solid",
+            "color": [
+                "#000000",
+                "#FFFFFF"
+            ],
+            "gender": "Unisex"
+        }
     },
     {
         "id": 27,
@@ -719,13 +780,16 @@
             "https://shop-skye.com/cdn/shop/products/SKYE-San-Francisco-SF-California-shop-ethical-sustainable-modern-chic-minimalist-luxury-clothing-women-fashion-Quintin-Pleated-Culottes-light-blue-1.jpg?v=1682655955",
             "https://shop-skye.com/cdn/shop/products/SKYE-San-Francisco-SF-California-shop-ethical-sustainable-modern-chic-minimalist-luxury-clothing-women-fashion-Quintin-Pleated-Culottes-light-blue-5.jpg?v=1682655957&width=1500"
         ],
-        "productDetails": [
-            {"styleCode": "C1001"},
-            {"closure": "Elastic Waistband"},
-            {"fabric": "Rayon"},
-            {"pattern": "Solid"},
-            {"color": "Beige"},
-            {"gender": "Women"}
-        ]
+        "productDetails": {
+            "styleCode": "C1001",
+            "closure": "Elastic Waistband",
+            "fabric": "Rayon",
+            "pattern": "Solid",
+            "color": [
+                "#F5F5DC",
+                "#FC2343"
+            ],
+            "gender": "Women"
+        }
     }
 ]

@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         setBottomNavigation()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun setBottomNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
@@ -32,17 +37,12 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.splashFragment, R.id.onBoardingFragment, R.id.loginFragment, R.id.registerFragment, R.id.productFragment -> {
+                R.id.splashFragment, R.id.onBoardingFragment, R.id.loginFragment, R.id.registerFragment, R.id.productFragment, R.id.passwordFragment, R.id.bookmarkFragment -> {
                     binding.bottomMain.visibility = View.GONE
                 }
 
                 else -> binding.bottomMain.visibility = View.VISIBLE
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

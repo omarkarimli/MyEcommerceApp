@@ -131,10 +131,10 @@
         <Button
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:text="@string/sign_up"
-            android:backgroundTint="@color/secondary"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+            android:backgroundTint="@color/on_tertiary_container"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
             app:layout_constraintTop_toBottomOf="@id/nameSurnameFields"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,21 +1,17 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.register
 
-import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
+import androidx.lifecycle.viewModelScope
+import com.omarkarimli.myecommerceapp.domain.repository.AuthRepository
 import com.omarkarimli.myecommerceapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    val sharedPreferences: SharedPreferences,
-    private val provideFirestore: FirebaseFirestore,
-    private val provideAuth: FirebaseAuth
+    private val provideRepo: AuthRepository
 ): ViewModel() {
 
     val isNavigating: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -26,36 +22,33 @@ class RegisterViewModel @Inject constructor(
         loading.value = true
 
         if (email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty() && surname.isNotEmpty()) {
-            // Register the user
-            provideAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = provideAuth.currentUser
+            viewModelScope.launch {
+                try {
+                    provideRepo.registerNewUser(email, password)
 
-                        // Save additional data to Firestore
-                        val userData = hashMapOf(
-                            Constants.NAME to name,
-                            Constants.SURNAME to surname,
-                            Constants.BOOKMARKED_IDS to arrayListOf<Int>()
-                        )
+                    // Save additional data to Firestore
+                    viewModelScope.launch {
+                        try {
+                            val userData = hashMapOf(
+                                Constants.NAME to name,
+                                Constants.SURNAME to surname,
+                                Constants.BOOKMARKED_IDS to arrayListOf<Int>(),
+                                Constants.CARTED_IDS to arrayListOf<Int>()
+                            )
+                            provideRepo.addUserToFirestore(userData)
 
-                        provideFirestore
-                            .collection(Constants.USERS)
-                            .document(user!!.uid)
-                            .set(userData)
-                            .addOnSuccessListener {
-                                loading.value = false
-                                isNavigating.value = true
-                            }
-                            .addOnFailureListener { e ->
-                                loading.value = false
-                                error.value = e.localizedMessage
-                            }
-                    } else {
-                        loading.value = false
-                        error.value = task.exception?.localizedMessage
+                            loading.value = false
+                            isNavigating.value = true
+                        } catch (e: Exception) {
+                            loading.value = false
+                            error.value = e.localizedMessage
+                        }
                     }
+                } catch (e: Exception) {
+                    loading.value = false
+                    error.value = e.localizedMessage
                 }
+            }
         } else {
             loading.value = false
             error.value = "Fill Gaps!"

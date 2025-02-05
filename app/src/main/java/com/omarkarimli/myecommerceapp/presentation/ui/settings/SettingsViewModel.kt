@@ -3,20 +3,18 @@ package com.omarkarimli.myecommerceapp.presentation.ui.settings
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.omarkarimli.myecommerceapp.utils.Constants
+import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
+    private val provideRepo: MyEcommerceRepository,
     private val sharedPreferences: SharedPreferences,
-    private val provideFirestore: FirebaseFirestore,
-    private val provideAuth: FirebaseAuth,
-    private val provideUserId: String?
+    private val provideAuth: FirebaseAuth
 ): ViewModel() {
 
     val nameSurname: MutableLiveData<String> = MutableLiveData()
@@ -31,32 +29,20 @@ class SettingsViewModel @Inject constructor(
     private fun fetchUserData() {
         loading.value = true
 
-        if (provideUserId != null) {
-            provideFirestore
-                .collection(Constants.USERS)
-                .document(provideUserId)
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document != null && document.exists()) {
-                        loading.value = false
+        viewModelScope.launch {
+            try {
+                val result = provideRepo.fetchUserData()
 
-                        // Fetch and display Name and Surname
-                        val name = document.getString("name") ?: "Unknown"
-                        val surname = document.getString("surname") ?: "Unknown"
+                loading.value = false
 
-                        nameSurname.value = "$name $surname"
-                    } else {
-                        error.value = "User not found, Signing out..."
-                        signOutAndRedirect()
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    error.value = "Error fetching user data: ${exception.localizedMessage}"
-                    signOutAndRedirect()
-                }
-        } else {
-            error.value = "User not logged in, Signing out..."
-            signOutAndRedirect()
+                // Fetch and display Name and Surname
+                val name = result.getString("name")
+                val surname = result.getString("surname")
+
+                nameSurname.value = "$name $surname"
+            } catch (e: Exception) {
+                signOutAndRedirect()
+            }
         }
     }
 

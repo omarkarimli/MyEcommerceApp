@@ -59,7 +59,8 @@ class OnBoardingFragment : Fragment() {
         })
 
         binding.fabNext.setOnClickListener {
-            viewModel.isNavigating.value = true
+            val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToLoginFragment()
+            findNavController().navigate(action)
         }
 
         observeData()
@@ -68,13 +69,6 @@ class OnBoardingFragment : Fragment() {
     private fun observeData() {
         viewModel.isFabVisible.observe(viewLifecycleOwner) { isVisible ->
             binding.fabNext.visibility = if (isVisible) View.VISIBLE else View.GONE
-        }
-
-        viewModel.isNavigating.observe(viewLifecycleOwner) { isNavigating ->
-            if (isNavigating) {
-                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToLoginFragment()
-                findNavController().navigate(action)
-            }
         }
     }
 }

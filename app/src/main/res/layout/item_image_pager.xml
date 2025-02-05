@@ -11,6 +11,6 @@
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
-        android:src="@drawable/placeholder_image" />
+        android:src="@drawable/no_picture" />
 
 </LinearLayout>

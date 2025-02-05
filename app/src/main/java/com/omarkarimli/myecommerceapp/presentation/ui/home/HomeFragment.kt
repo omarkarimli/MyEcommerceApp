@@ -1,26 +1,20 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.adapters.CategoryAdapter
 import com.omarkarimli.myecommerceapp.adapters.ProductAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentHomeBinding
-import com.omarkarimli.myecommerceapp.models.ProductModel
 import com.omarkarimli.myecommerceapp.utils.goneItem
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment: Fragment() {
@@ -48,13 +42,15 @@ class HomeFragment: Fragment() {
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        // Refresh bookmark data when returning to HomeFragment
+        viewModel.fetchBookmarkedIds()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Fab New Product
-        binding.fabAdd.setOnClickListener {
-            writeCategoriesToFirestore()
-        }
 
         binding.rvProducts.adapter = productAdapter
         binding.rvCategories.adapter = categoryAdapter
@@ -72,6 +68,24 @@ class HomeFragment: Fragment() {
             viewModel.filterProductsByCategory(it)
         }
 
+        binding.editTextSearch.doOnTextChanged { inputText, _, _, _ ->
+            if (inputText.toString().isNotEmpty()) {
+                val searchQuery = inputText.toString().trim()
+                val searchedProducts = viewModel.filteredProducts.value?.filter { product ->
+                    product.title?.contains(searchQuery, ignoreCase = true) == true
+                }
+                productAdapter.updateProductList(searchedProducts ?: emptyList())
+
+                if (searchedProducts.isNullOrEmpty()) {
+                    binding.containerState.visibleItem()
+                    binding.rvProducts.goneItem()
+                } else {
+                    binding.containerState.goneItem()
+                    binding.rvProducts.visibleItem()
+                }
+            }
+        }
+
         observeData()
     }
 
@@ -79,10 +93,14 @@ class HomeFragment: Fragment() {
 
         viewModel.filteredProducts.observe(viewLifecycleOwner) {
             productAdapter.updateProductList(it)
-        }
 
-        viewModel.bookmarkedIds.observe(viewLifecycleOwner) {
-            productAdapter.updateBookmarkedProductsId(it)
+            if (it.isEmpty()) {
+                binding.rvProducts.goneItem()
+                binding.containerState.visibleItem()
+            } else {
+                binding.rvProducts.visibleItem()
+                binding.containerState.goneItem()
+            }
         }
 
         viewModel.categories.observe(viewLifecycleOwner) {
@@ -111,60 +129,6 @@ class HomeFragment: Fragment() {
             if (it.isNotEmpty()) {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
-        }
-    }
-
-    private fun writeProductsToFirestore() {
-        val firestore = FirebaseFirestore.getInstance()
-
-        // Step 1: Read the JSON file from the raw resource
-        val inputStream = resources.openRawResource(R.raw.products)
-        val jsonString = inputStream.bufferedReader().use { it.readText() }
-
-        // Step 2: Parse the JSON string into a list of maps or objects
-        val gson = Gson()
-        val productListType = object : TypeToken<List<Map<String, Any>>>() {}.type
-        val products: List<Map<String, Any>> = gson.fromJson(jsonString, productListType)
-
-        // Step 3: Add each product to Firestore
-        for (product in products) {
-            firestore.collection("products")
-                .add(product)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                    Log.d("111", "Success")
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show()
-                    Log.d("111", it.message.toString())
-                }
-        }
-    }
-
-    private fun writeCategoriesToFirestore() {
-        val firestore = FirebaseFirestore.getInstance()
-
-        // Step 1: Read the JSON file from the raw resource
-        val inputStream = resources.openRawResource(R.raw.categories)
-        val jsonString = inputStream.bufferedReader().use { it.readText() }
-
-        // Step 2: Parse the JSON string into a list of maps or objects
-        val gson = Gson()
-        val categoriesListType = object : TypeToken<List<Map<String, Any>>>() {}.type
-        val categories: List<Map<String, Any>> = gson.fromJson(jsonString, categoriesListType)
-
-        // Step 3: Add each category to Firestore
-        for (category in categories) {
-            firestore.collection("categories")
-                .add(category)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                    Log.d("111", "Success")
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show()
-                    Log.d("111", it.message.toString())
-                }
         }
     }
 }

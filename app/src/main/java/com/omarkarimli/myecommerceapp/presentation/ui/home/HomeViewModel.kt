@@ -1,21 +1,20 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.omarkarimli.myecommerceapp.models.CategoryModel
-import com.omarkarimli.myecommerceapp.models.ProductModel
+import androidx.lifecycle.viewModelScope
+import com.omarkarimli.myecommerceapp.domain.models.CategoryModel
+import com.omarkarimli.myecommerceapp.domain.models.ProductModel
+import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
 import com.omarkarimli.myecommerceapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val provideFirestore: FirebaseFirestore,
-    private val provideUserId: String?
+    private val provideRepo: MyEcommerceRepository
 ) : ViewModel() {
 
     private val _categories = MutableLiveData<List<CategoryModel>>()
@@ -26,71 +25,61 @@ class HomeViewModel @Inject constructor(
     val filteredProducts: LiveData<List<ProductModel>> = _filteredProducts
 
     private val _bookmarkedIds = MutableLiveData<List<Int>>()
-    val bookmarkedIds: LiveData<List<Int>> = _bookmarkedIds
+    private val bookmarkedIds: LiveData<List<Int>> = _bookmarkedIds
 
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val error: MutableLiveData<String> = MutableLiveData()
     val success: MutableLiveData<String> = MutableLiveData()
 
     init {
-        fetchBookmarkedIds()
         fetchCategories()
+        fetchBookmarkedIds()
     }
 
     private fun fetchProducts() {
         loading.value = true
 
-        provideFirestore
-            .collection(Constants.PRODUCTS)
-            .get()
-            .addOnSuccessListener { snapshot ->
-                val productList = snapshot.toObjects(ProductModel::class.java)
-//                _products.value = productList
-//                _filteredProducts.value = productList // Initially display all products
+        viewModelScope.launch {
+            try {
+                val result = provideRepo.fetchProducts()
 
-                val newList = productList.map {
-                    if (bookmarkedIds.value?.contains(it.id) == true) {
-                        it.copy(isBookmarked = true)
-                    } else {
-                        it
-                    }
+                val productList = result.toObjects(ProductModel::class.java)
+
+                val newList = productList.map { product ->
+                    val isBookmarked = bookmarkedIds.value?.any { it == product.id } ?: false
+                    product.copy(isBookmarked = isBookmarked)
                 }
 
                 _products.value = newList
                 _filteredProducts.value = newList
 
                 loading.value = false
+            } catch (e: Exception) {
+                error.value = "Error fetching products: ${e.message}"
             }
-            .addOnFailureListener { exception ->
-                error.value = "Error fetching products: ${exception.message}"
-            }
+        }
     }
 
-    private fun fetchBookmarkedIds() {
-        provideUserId?.let { uid ->
-            provideFirestore
-                .collection(Constants.USERS)
-                .document(uid)
-                .get()
-                .addOnSuccessListener { document ->
-                    _bookmarkedIds.value = document.get(Constants.BOOKMARKED_IDS) as? List<Int> ?: emptyList()
+    fun fetchBookmarkedIds() {
+        viewModelScope.launch {
+            try {
+                val result = provideRepo.fetchBookmarkedIds()
+                _bookmarkedIds.value = result
 
-                    fetchProducts()
-                }
-                .addOnFailureListener { exception ->
-                    error.value = "Error fetching bookmarks: ${exception.message}"
-                }
+                fetchProducts()
+            } catch (e: Exception) {
+                error.value = "Error fetching bookmarks: ${e.message}"
+            }
         }
     }
 
     private fun fetchCategories() {
         loading.value = true
 
-        provideFirestore
-            .collection(Constants.CATEGORIES)
-            .get()
-            .addOnSuccessListener { snapshot ->
-                var categoryList = snapshot.toObjects(CategoryModel::class.java)
+        viewModelScope.launch {
+            try {
+                val result = provideRepo.fetchCategories()
+                val categoryList = result.toObjects(CategoryModel::class.java)
 
                 // Add "All" category at the beginning
                 categoryList.add(0, CategoryModel(0, Constants.ALL))
@@ -98,10 +87,10 @@ class HomeViewModel @Inject constructor(
                 _categories.value = categoryList
 
                 loading.value = false
+            } catch (e: Exception) {
+                error.value = "Error fetching categories: ${e.message}"
             }
-            .addOnFailureListener { exception ->
-                error.value = "Error fetching categories: ${exception.message}"
-            }
+        }
     }
 
     fun filterProductsByCategory(categoryName: String) {
@@ -114,28 +103,31 @@ class HomeViewModel @Inject constructor(
     }
 
     fun toggleBookmark(productId: Int) {
-        val currentBookmarks = bookmarkedIds.value?.toMutableList() ?: mutableListOf()
+        // Initialize or copy the current bookmarks as a mutable list
+        val newBookmarks = _bookmarkedIds.value?.toMutableList() ?: mutableListOf()
 
-        if (currentBookmarks.contains(productId)) {
-            currentBookmarks.remove(productId)
+        if (newBookmarks.isEmpty() || !newBookmarks.any { it == productId }) {
+            newBookmarks.add(productId)
         } else {
-            currentBookmarks.add(productId)
+            // index always makes -1 problem
+            for (i in newBookmarks.indices) {
+                if (newBookmarks[i] == productId) {
+                    newBookmarks.removeAt(i)
+                    break
+                }
+            }
         }
 
-        // Update Firestore
-        provideUserId?.let { uid ->
-            provideFirestore
-                .collection(Constants.USERS)
-                .document(uid)
-                .update(Constants.BOOKMARKED_IDS, currentBookmarks)
-                .addOnSuccessListener {
-                    _bookmarkedIds.value = currentBookmarks
+        viewModelScope.launch {
+            try {
+                provideRepo.updateBookmark(newBookmarks)
 
-                    success.value = "Bookmark updated successfully"
-                }
-                .addOnFailureListener { exception ->
-                    error.value = "Error updating bookmarks: ${exception.message}"
-                }
+                _bookmarkedIds.value = newBookmarks
+                fetchBookmarkedIds()
+                success.value = "Bookmark updated successfully"
+            } catch (e: Exception) {
+                error.value = "Error updating bookmarks: ${e.message}"
+            }
         }
     }
 

@@ -2,12 +2,15 @@ package com.omarkarimli.myecommerceapp.presentation.ui.password
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.EmailAuthProvider
-import com.google.firebase.auth.FirebaseUser
+import androidx.lifecycle.viewModelScope
+import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class PasswordViewModel @Inject constructor(
-    private val provideCurrentUser: FirebaseUser?
+    private val provideRepo: MyEcommerceRepository
 ) : ViewModel() {
 
     val isNavigating: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -21,25 +24,15 @@ class PasswordViewModel @Inject constructor(
         if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() && confirmNewPassword.isNotEmpty()) {
             if (newPassword != currentPassword) {
                 if (newPassword == confirmNewPassword) {
-                    val credential = EmailAuthProvider.getCredential(provideCurrentUser!!.email!!, currentPassword)
+                    viewModelScope.launch {
+                        try {
+                            provideRepo.changePassword(currentPassword)
 
-                    provideCurrentUser
-                        .reauthenticate(credential)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                provideCurrentUser
-                                    .updatePassword(newPassword)
-                                    .addOnCompleteListener { updateTask ->
-                                    if (updateTask.isSuccessful) {
-                                        isNavigating.value = true
-                                        success.value = "Password updated successfully"
-                                    } else {
-                                        error.value = "Failed to update password: ${updateTask.exception?.message}"
-                                    }
-                                }
-                            } else {
-                                error.value = "Failed to reauthenticate user: ${task.exception?.message}"
-                            }
+                            isNavigating.value = true
+                            success.value = "Password updated successfully"
+                        } catch (e: Exception) {
+                            error.value = "Error updating password: ${e.message}"
+                        }
                     }
                 } else {
                     error.value = "New passwords do not match"

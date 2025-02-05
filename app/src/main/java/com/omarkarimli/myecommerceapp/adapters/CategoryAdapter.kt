@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.ItemCategoryBinding
-import com.omarkarimli.myecommerceapp.models.CategoryModel
+import com.omarkarimli.myecommerceapp.domain.models.CategoryModel
 import com.omarkarimli.myecommerceapp.utils.Constants
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

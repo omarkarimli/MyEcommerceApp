@@ -31,7 +31,15 @@
     <string name="new_password">New Password</string>
     <string name="helper_text">Minimum 6 character</string>
     <string name="email_suffix">\@gmail.com</string>
+    <string name="bookmarks">Bookmarks</string>
     <string name="bookmark">Bookmark</string>
     <string name="log_out">Log out</string>
-    <string name="bookmarks">Bookmarks</string>
+    <string name="scrollbar">Scrollbar</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="cart">Cart</string>
+    <string name="home">Home</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
 </resources>

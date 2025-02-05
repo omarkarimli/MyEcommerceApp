@@ -1,5 +1,6 @@
 package com.omarkarimli.myecommerceapp.adapters
 
+import android.graphics.Paint
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -13,7 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.ItemProductBinding
-import com.omarkarimli.myecommerceapp.models.ProductModel
+import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.utils.loadFirstImage
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -22,7 +23,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     lateinit var onBookmarkClick: (Int) -> Unit
 
     private var productList = arrayListOf<ProductModel>()
-    private var bookmarkedIdList = arrayListOf<Int>()
 
     inner class ProductViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -46,64 +46,23 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
 
             val discount = product.discount ?: 0
             if (product.discount != null) {
-                textViewDiscount.text = "-${product.discount}%"
+                buttonDiscount.text = "${product.discount}%"
 
-                val priceDiscounted =
-                    product.originalPrice!! - (product.originalPrice * discount) / 100
+                val priceDiscounted = product.originalPrice!! - (product.originalPrice * discount) / 100
+                textViewPriceDiscounted.text = "$$priceDiscounted"
 
-                // Create Spannable for discounted price
-                val discountedPriceText = SpannableString("$${priceDiscounted} ")
-                discountedPriceText.setSpan(
-                    ForegroundColorSpan(
-                        ContextCompat.getColor(
-                            holder.itemView.context,
-                            R.color.red
-                        )
-                    ), // Set color red
-                    0,
-                    discountedPriceText.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                discountedPriceText.setSpan(
-                    RelativeSizeSpan(1.2f), // Make discounted price 20% larger
-                    0,
-                    discountedPriceText.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-
-                // Create Spannable for original price
-                val originalPriceText = SpannableString("$${product.originalPrice}")
-                originalPriceText.setSpan(
-                    StrikethroughSpan(),
-                    0,
-                    originalPriceText.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                originalPriceText.setSpan(
-                    RelativeSizeSpan(1f), // Make original price 20% smaller
-                    0,
-                    originalPriceText.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-
-                // Combine both parts into a SpannableStringBuilder
-                val finalPriceText = SpannableStringBuilder()
-                finalPriceText.append(discountedPriceText)
-                finalPriceText.append(originalPriceText)
-
-                textViewPrice.text = finalPriceText
+                textViewPriceOriginal.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                textViewPriceOriginal.text = "$${product.originalPrice}"
             }
 
             imageViewProduct.loadFirstImage(product.images)
 
             // Update button state based on isBookmarked
-            val isBookmarked = bookmarkedIdList.contains(product.id)
+            val isBookmarked = product.isBookmarked
             buttonBookmark.icon = ContextCompat.getDrawable(
                 buttonBookmark.context,
                 if (isBookmarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
             )
-
-            Log.e("444", "isBookmarked: $isBookmarked | Product Id: ${product.id} | $bookmarkedIdList")
 
             //buttonBookmark.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.unbookmarked))
 
@@ -122,12 +81,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     fun updateProductList(newList: List<ProductModel>) {
         productList.clear()
         productList.addAll(newList)
-        notifyDataSetChanged()
-    }
-
-    fun updateBookmarkedProductsId(newList: List<Int>) {
-        bookmarkedIdList.clear()
-        bookmarkedIdList.addAll(newList)
         notifyDataSetChanged()
     }
 }

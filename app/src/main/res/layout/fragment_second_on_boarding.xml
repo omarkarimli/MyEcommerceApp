@@ -5,19 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.onboarding.SecondOnBoardingFragment"
-    android:background="#f9f9fb">
+    tools:context=".presentation.ui.onboarding.SecondOnBoardingFragment" >
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/onboarding_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/onboarding2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="64dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -25,9 +23,9 @@
         android:layout_height="wrap_content"
         android:text="Easy to Apply on\nMobile App"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp" />
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

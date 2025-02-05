@@ -4,24 +4,24 @@
 
     <!-- Primary Colors -->
     <color name="primary">#007C8C</color>   <!-- Button background color -->
-    <color name="on_primary">#FFFFFF</color>
     <color name="primary_container">#B2EFFF</color>
     <color name="on_primary_container">#001F23</color>
 
     <!-- Secondary Colors -->
     <color name="secondary">#4D6669</color>
-    <color name="on_secondary">#FFFFFF</color>
     <color name="secondary_container">#CBE8E9</color>
     <color name="on_secondary_container">#001F23</color>
 
     <!-- Tertiary Colors -->
     <color name="tertiary">#4D527D</color>
-    <color name="on_tertiary">#FFFFFF</color>
     <color name="tertiary_container">#DCE4FF</color>
     <color name="on_tertiary_container">#000A28</color>
 
     <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
     <color name="red">#ED5858</color>
-    <color name="yellow">#F2C94C</color>
+    <color name="yellow">#fd9c27</color>
 
 </resources>

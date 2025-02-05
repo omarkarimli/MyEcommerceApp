@@ -10,7 +10,6 @@
         android:id="@+id/viewPager2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@id/dots_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,17 +19,19 @@
         android:id="@+id/dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginVertical="16dp"
         app:selectedDotColor="@color/tertiary"
         app:dotsColor="@color/tertiary_container"
         app:dotsCornerRadius="8dp"
-        app:dotsSize="16dp"
+        app:dotsSize="8dp"
         app:dotsSpacing="3dp"
         app:dotsWidthFactor="2.5"
+        app:progressMode="true"
+        android:layout_margin="32dp"
+        app:layout_constraintTop_toBottomOf="@id/viewPager2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:progressMode="true" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_next"

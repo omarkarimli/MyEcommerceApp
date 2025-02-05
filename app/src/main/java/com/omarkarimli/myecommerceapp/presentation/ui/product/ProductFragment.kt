@@ -1,12 +1,7 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.product
 
+import android.graphics.Paint
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
-import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,13 +13,18 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.omarkarimli.myecommerceapp.R
+import com.omarkarimli.myecommerceapp.adapters.ColorAdapter
 import com.omarkarimli.myecommerceapp.adapters.ImagePagerAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentProductBinding
+import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProductFragment : Fragment() {
 
+    private val colorAdapter = ColorAdapter()
+
+    private val args: ProductFragmentArgs by navArgs()
     private lateinit var binding: FragmentProductBinding
     private val viewModel: ProductViewModel by viewModels()
 
@@ -43,8 +43,30 @@ class ProductFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        val args: ProductFragmentArgs by navArgs()
-        viewModel.getProductById(args.id)
+        binding.buttonMinus.setOnClickListener {
+            viewModel.changeNumberOfProduct(-1)
+        }
+        binding.buttonPlus.setOnClickListener {
+            viewModel.changeNumberOfProduct(1)
+        }
+
+        binding.fabAddToCart.setOnClickListener {
+            viewModel.addProductToCart(viewModel.product.value!!)
+        }
+
+        colorAdapter.onColorClick = {
+            viewModel.toggleColor(it)
+        }
+
+        binding.buttonBookmark.setOnClickListener {
+            viewModel.toggleBookmark(args.id)
+        }
+
+        viewModel.productId.value = args.id
+
+        binding.productColorRv.adapter = colorAdapter
+
+        binding.textViewPriceOriginal.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
         observeViewModel()
     }
@@ -53,53 +75,10 @@ class ProductFragment : Fragment() {
         viewModel.product.observe(viewLifecycleOwner) { product ->
             product?.let {
                 binding.apply {
-                    productTitle.text = it.title
-                    productDesc.text = it.description
-                    textViewRate.text = it.averageRating.toString()
-
-                    val discount = product.discount ?: 0
-                    if (product.discount != null) {
-                        textViewDiscount.text = "-${product.discount}%"
-
-                        val priceDiscounted = product.originalPrice!! - (product.originalPrice * discount) / 100
-
-                        // Create Spannable for discounted price
-                        val discountedPriceText = SpannableString("$${priceDiscounted} ")
-                        discountedPriceText.setSpan(
-                            ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.red)), // Set color red
-                            0,
-                            discountedPriceText.length,
-                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                        )
-                        discountedPriceText.setSpan(
-                            RelativeSizeSpan(1.2f), // Make discounted price 20% larger
-                            0,
-                            discountedPriceText.length,
-                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                        )
-
-                        // Create Spannable for original price
-                        val originalPriceText = SpannableString("$${product.originalPrice}")
-                        originalPriceText.setSpan(
-                            StrikethroughSpan(),
-                            0,
-                            originalPriceText.length,
-                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                        )
-                        originalPriceText.setSpan(
-                            RelativeSizeSpan(1f), // Make original price 20% smaller
-                            0,
-                            originalPriceText.length,
-                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                        )
-
-                        // Combine both parts into a SpannableStringBuilder
-                        val finalPriceText = SpannableStringBuilder()
-                        finalPriceText.append(discountedPriceText)
-                        finalPriceText.append(originalPriceText)
-
-                        textViewPrice.text = finalPriceText
-                    }
+                    productTitle.text = product.title
+                    productDesc.text = product.description
+                    textViewRating.text = product.averageRating.toString()
+                    productSellerGender.text = "${product.seller}   |   ${product.productDetails?.gender}"
 
                     // Load images into ViewPager
                     val imageUrls = product.images
@@ -108,6 +87,21 @@ class ProductFragment : Fragment() {
 
                     // Set up dots indicator
                     dotsIndicator.attachTo(viewPager2)
+
+                    // Update button state based on isBookmarked
+                    buttonBookmark.icon = ContextCompat.getDrawable(
+                        buttonBookmark.context,
+                        if (product.isBookmarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+                    )
+
+                    fabAddToCart.text = if (product.isCarted) "Remove from cart" else "Add to cart"
+                    fabAddToCart.backgroundTintList = ContextCompat.getColorStateList(
+                        requireContext(),
+                        if (product.isCarted) R.color.secondary_container else R.color.on_tertiary_container
+                    )
+                    fabAddToCart.setTextColor(ContextCompat.getColor(fabAddToCart.context,
+                        if (product.isCarted) R.color.on_tertiary_container else R.color.white
+                    ))
                 }
             }
         }
@@ -120,6 +114,31 @@ class ProductFragment : Fragment() {
             errorMessage?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
+        }
+
+        viewModel.success.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.colorModels.observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                colorAdapter.updateList(it)
+                binding.containerColor.visibleItem()
+            }
+        }
+
+        viewModel.numberOfProduct.observe(viewLifecycleOwner) {
+            binding.textViewNumberOfProduct.text = "$it"
+        }
+
+        viewModel.totalOriginalPrice.observe(viewLifecycleOwner) {
+            binding.textViewPriceOriginal.text = "$$it"
+        }
+
+        viewModel.totalDiscountedPrice.observe(viewLifecycleOwner) {
+            binding.textViewPriceDiscounted.text = "$$it"
         }
     }
 }
