@@ -1,0 +1,86 @@
+[
+    {
+        "id": 0,
+        "title": "Solid Men Multicolor Track Pants",
+        "description": "Yorker trackpants made from 100% rich combed cotton giving it a rich look.Designed for Comfort,Skin friendly fabric,itch-free waistband & great for all year round use Proudly made in India",
+        "brand": "York",
+        "category": "Clothing and Accessories",
+        "averageRating": 3.9,
+        "creationDate": "02/10/2021, 20:11:51",
+        "seller": "Shyam Enterprises",
+        "discount": 30,
+        "originalPrice": 128,
+        "outOfStock": false,
+        "images": [
+            "https://5.imimg.com/data5/SELLER/Default/2023/1/BS/HZ/LL/43967183/black-2-500x500.jpg",
+            "https://5.imimg.com/data5/SELLER/Default/2023/1/XS/UH/FZ/43967183/maroon-2-500x500.jpg"
+        ],
+        "productDetails": [
+            {
+                "styleCode": "1005COMBO2"
+            },
+            {
+                "closure": "Elastic"
+            },
+            {
+                "pockets": "Side pockets"
+            },
+            {
+                "fabric": "Cotton Blend"
+            },
+            {
+                "pattern": "Solid"
+            },
+            {
+                "color": [
+                    "#FF5733",
+                    "#33FF57",
+                    "#3357FF"
+                ]
+            },
+            {
+                "gender": "Men"
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "title": "Pleated Culottes",
+        "description": "Stylish pleated culottes with a relaxed fit. Ideal for summer outings.",
+        "brand": "ChicTrend",
+        "category": "Clothing and Accessories",
+        "averageRating": 4.6,
+        "creationDate": "10/15/2023, 13:00:00",
+        "seller": "TrendyLooks",
+        "discount": 30,
+        "originalPrice": 50,
+        "outOfStock": false,
+        "images": [
+            "https://shop-skye.com/cdn/shop/products/SKYE-San-Francisco-SF-California-shop-ethical-sustainable-modern-chic-minimalist-luxury-clothing-women-fashion-Quintin-Pleated-Culottes-light-blue-1.jpg?v=1682655955",
+            "https://shop-skye.com/cdn/shop/products/SKYE-San-Francisco-SF-California-shop-ethical-sustainable-modern-chic-minimalist-luxury-clothing-women-fashion-Quintin-Pleated-Culottes-light-blue-5.jpg?v=1682655957&width=1500"
+        ],
+        "productDetails": [
+            {
+                "styleCode": "C1001"
+            },
+            {
+                "closure": "Elastic Waistband"
+            },
+            {
+                "fabric": "Rayon"
+            },
+            {
+                "pattern": "Solid"
+            },
+            {
+                "color": [
+                    "#F5F5DC",
+                    "#FC2343"
+                ]
+            },
+            {
+                "gender": "Women"
+            }
+        ]
+    }
+]
