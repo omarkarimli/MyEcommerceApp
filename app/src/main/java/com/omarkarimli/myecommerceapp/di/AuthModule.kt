@@ -1,9 +1,6 @@
 package com.omarkarimli.myecommerceapp.di
 
 import com.google.firebase.auth.FirebaseAuth
-import com.omarkarimli.myecommerceapp.data.repository.AuthRepositoryImpl
-import com.omarkarimli.myecommerceapp.domain.repository.AuthRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
