@@ -1,5 +1,6 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.bookmark
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,26 +26,24 @@ class BookmarkViewModel @Inject constructor(
     val error: MutableLiveData<String> = MutableLiveData()
     val success: MutableLiveData<String> = MutableLiveData()
 
-    private fun fetchProducts() {
+    fun fetchCategories() {
         loading.value = true
 
         viewModelScope.launch {
             try {
-                val result = provideRepo.fetchProducts()
+                val result = provideRepo.fetchCategories()
+                categories.value = result
 
-                products.value = result
-                filteredProducts.value = result
-
-                fetchCategories()
+                fetchBookmarkedIds()
 
                 loading.value = false
             } catch (e: Exception) {
-                error.value = "Error fetching products: ${e.message}"
+                error.value = "Error fetching categories: ${e.message}"
             }
         }
     }
 
-    fun fetchBookmarkedIds() {
+    private fun fetchBookmarkedIds() {
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchBookmarkedIds()
@@ -57,17 +56,19 @@ class BookmarkViewModel @Inject constructor(
         }
     }
 
-    private fun fetchCategories() {
+    private fun fetchProducts() {
         loading.value = true
 
         viewModelScope.launch {
             try {
-                val result = provideRepo.fetchCategories()
-                categories.value = result
+                val result = provideRepo.fetchProducts().filter { it.id in bookmarkedIds.value.orEmpty() }
+                products.value = result
+                filteredProducts.value = result
 
                 loading.value = false
             } catch (e: Exception) {
-                error.value = "Error fetching categories: ${e.message}"
+                error.value = "Error fetching products: ${e.message}"
+                Log.e("555", e.message!!)
             }
         }
     }
@@ -98,9 +99,9 @@ class BookmarkViewModel @Inject constructor(
                 }
 
                 provideRepo.updateBookmark(newBookmarks)
-
                 bookmarkedIds.value = newBookmarks
                 fetchBookmarkedIds()
+
                 success.value = "Bookmark updated successfully"
             } catch (e: Exception) {
                 error.value = "Error updating bookmarks: ${e.message}"

@@ -45,14 +45,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="No bookmark found"
+            android:text="Empty cart"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         <TextView
             android:id="@+id/textView_state_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No bookmark found. You can add later."
+            android:text="No product found. You can add later."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="@color/secondary"
             android:layout_marginTop="8dp"

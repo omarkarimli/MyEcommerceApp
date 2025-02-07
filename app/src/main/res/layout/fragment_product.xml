@@ -121,7 +121,7 @@
                     android:contentDescription="@string/bookmark"
                     app:icon="@drawable/baseline_bookmark_border_24"
                     app:iconTint="@color/primary"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/background"
                     style="?attr/materialIconButtonFilledTonalStyle"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
@@ -226,7 +226,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/light_gray"
+                        android:backgroundTint="@color/gray_tone_2"
                         android:layout_margin="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" >
@@ -327,7 +327,7 @@
         android:contentDescription="@string/add_to_cart"
         android:text="@string/add_to_cart"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/background"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
         android:layout_marginHorizontal="16dp"

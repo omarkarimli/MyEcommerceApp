@@ -6,40 +6,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxHeight="384dp"
-    android:adjustViewBounds="true"
-    android:layout_margin="8dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="32dp" >
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="192dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/no_picture"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView_title" />
-
-    <!-- Discount -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_discount"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="25%"
-        android:textColor="@color/white"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        app:icon="@drawable/baseline_discount_24"
-        app:iconTint="@color/white"
-        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-        android:backgroundTint="@color/red"
-        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-        android:paddingHorizontal="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintStart_toStartOf="@id/imageView_product"
-        app:layout_constraintBottom_toBottomOf="@id/imageView_product" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView_title"
@@ -47,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="12dp"
         android:ellipsize="end"
-        android:maxLines="1"
         android:text="Product Title"
+        android:maxLength="20"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$56.0"
-            android:textColor="@color/red"
+            android:textColor="@color/error"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         <!-- Original Price -->
@@ -96,7 +75,7 @@
         android:contentDescription="@string/bookmark"
         app:icon="@drawable/baseline_bookmark_border_24"
         app:iconTint="@color/primary"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/background"
         style="?attr/materialIconButtonFilledTonalStyle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

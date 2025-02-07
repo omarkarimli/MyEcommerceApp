@@ -1,17 +1,24 @@
 package com.omarkarimli.myecommerceapp.presentation
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.ActivityMainBinding
+import com.omarkarimli.myecommerceapp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
@@ -23,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setBottomNavigation()
+        setTheme()
     }
 
     override fun onDestroy() {
@@ -44,5 +52,14 @@ class MainActivity : AppCompatActivity() {
                 else -> binding.bottomMain.visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun setTheme() {
+        val isDarkMode = sharedPreferences.getBoolean(Constants.DARK_MODE, false)
+
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        )
     }
 }

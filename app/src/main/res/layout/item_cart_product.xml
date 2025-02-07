@@ -1,119 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-    android:layout_margin="16dp">
+    android:layout_marginHorizontal="16dp"
+    android:paddingTop="32dp" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_product"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView_product"
-            android:layout_width="116dp"
-            android:layout_height="116dp"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Product Title"
+        android:textAlignment="textStart"
+        android:ellipsize="end"
+        android:maxLength="16"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        app:layout_constraintStart_toEndOf="@id/imageView_product"
+        app:layout_constraintTop_toTopOf="@id/imageView_product" />
 
-        <TextView
-            android:id="@+id/textView_title"
+    <TextView
+        android:id="@+id/textView_product_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand"
+        android:textColor="@color/gray"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_title"
+        app:layout_constraintStart_toStartOf="@id/textView_title" />
+
+    <TextView
+        android:id="@+id/textView_product_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$145"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_product"
+        app:layout_constraintStart_toStartOf="@id/textView_title" />
+
+    <ImageView
+        android:id="@+id/imageView_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_close_24"
+        app:tint="@color/gray"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="@id/imageView_product"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray_tone_2"
+        app:layout_constraintEnd_toEndOf="@id/imageView_remove"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_product" >
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:text="Product Title"
-            android:textAlignment="textStart"
-            android:ellipsize="end"
-            android:maxLength="16"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-            app:layout_constraintStart_toEndOf="@id/imageView_product"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:gravity="center"
+            android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView_product_brand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Brand"
-            android:textColor="@color/gray"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/textView_title"
-            app:layout_constraintStart_toStartOf="@id/textView_title" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_minus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:iconGravity="textEnd"
+                app:icon="@drawable/baseline_remove_24"
+                app:iconTint="@color/primary"
+                style="?attr/materialIconButtonFilledTonalStyle"
+                android:backgroundTint="@color/transparent"/>
 
-        <TextView
-            android:id="@+id/textView_product_total_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$145"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
-            android:layout_marginVertical="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_product_brand"
-            app:layout_constraintStart_toStartOf="@id/textView_title" />
-
-        <ImageView
-            android:id="@+id/imageView_remove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_close_24"
-            app:tint="@color/gray"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/light_gray"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" >
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView_number_of_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:padding="8dp"
+                android:text="1"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_minus"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:iconGravity="textEnd"
-                    app:icon="@drawable/baseline_remove_24"
-                    app:iconTint="@color/primary"
-                    style="?attr/materialIconButtonFilledTonalStyle"
-                    android:backgroundTint="@color/transparent"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_plus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:iconGravity="textEnd"
+                app:icon="@drawable/baseline_add_24"
+                app:iconTint="@color/primary"
+                style="?attr/materialIconButtonFilledTonalStyle"
+                android:backgroundTint="@color/transparent"/>
 
-                <TextView
-                    android:id="@+id/textView_number_of_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="1"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_plus"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:iconGravity="textEnd"
-                    app:icon="@drawable/baseline_add_24"
-                    app:iconTint="@color/primary"
-                    style="?attr/materialIconButtonFilledTonalStyle"
-                    android:backgroundTint="@color/transparent"/>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_product"/>
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

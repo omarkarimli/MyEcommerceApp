@@ -46,7 +46,7 @@ class HomeFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.fetchBookmarkedIds()
+        viewModel.fetchCategories()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,8 +63,9 @@ class HomeFragment: Fragment() {
         categoryAdapter.onItemClick = { viewModel.filterProductsByCategory(it) }
 
         binding.editTextSearch.doOnTextChanged { inputText, _, _, _ ->
-            if (inputText.toString().isNotEmpty()) {
-                val searchQuery = inputText.toString().trim()
+            val searchQuery = inputText.toString().trim()
+
+            if (searchQuery.isNotEmpty()) {
                 val searchedProducts = viewModel.filteredProducts.value?.filter { product ->
                     product.title?.contains(searchQuery, ignoreCase = true) == true
                 }
@@ -77,6 +78,12 @@ class HomeFragment: Fragment() {
                     binding.containerState.goneItem()
                     binding.rvProducts.visibleItem()
                 }
+            } else {
+                // Reset list when search is cleared
+                viewModel.filteredProducts.value = viewModel.products.value ?: emptyList()
+
+                binding.containerState.goneItem()
+                binding.rvProducts.visibleItem()
             }
         }
 
@@ -89,11 +96,9 @@ class HomeFragment: Fragment() {
             if (it) {
                 binding.progressBar.visibleItem()
                 binding.rvProducts.goneItem()
-                binding.rvCategories.goneItem()
             } else {
                 binding.progressBar.goneItem()
                 binding.rvProducts.visibleItem()
-                binding.rvCategories.visibleItem()
             }
         }
         viewModel.error.observe(viewLifecycleOwner) {

@@ -13,6 +13,8 @@ object Constants {
 
     const val SHARED_PREFS = "shared_prefs"
     const val IS_LOGGED_KEY = "is_logged_key"
+    const val IS_NOTI = "is_noti"
+    const val DARK_MODE = "dark_mode"
 
     const val USERS = "users"
     const val ID = "id"

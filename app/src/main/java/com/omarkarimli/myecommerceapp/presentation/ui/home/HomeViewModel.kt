@@ -19,14 +19,31 @@ class HomeViewModel @Inject constructor(
 
     val categories: MutableLiveData<List<CategoryModel>> = MutableLiveData()
     val filteredProducts: MutableLiveData<List<ProductModel>> = MutableLiveData()
-    private val products: MutableLiveData<List<ProductModel>> = MutableLiveData()
-    val bookmarkedIds: MutableLiveData<List<Int>> = MutableLiveData()
+    val products: MutableLiveData<List<ProductModel>> = MutableLiveData()
+    private val bookmarkedIds: MutableLiveData<List<Int>> = MutableLiveData()
 
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val error: MutableLiveData<String> = MutableLiveData()
     val success: MutableLiveData<String> = MutableLiveData()
 
-    fun fetchBookmarkedIds() {
+    fun fetchCategories() {
+        loading.value = true
+
+        viewModelScope.launch {
+            try {
+                val result = provideRepo.fetchCategories()
+                categories.value = result
+
+                fetchBookmarkedIds()
+
+                loading.value = false
+            } catch (e: Exception) {
+                error.value = "Error fetching categories: ${e.message}"
+            }
+        }
+    }
+
+    private fun fetchBookmarkedIds() {
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchBookmarkedIds()
@@ -45,31 +62,13 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchProducts()
-
                 products.value = result
                 filteredProducts.value = result
-
-                fetchCategories()
 
                 loading.value = false
             } catch (e: Exception) {
                 error.value = "Error fetching products: ${e.message}"
                 Log.e("555", e.message!!)
-            }
-        }
-    }
-
-    private fun fetchCategories() {
-        loading.value = true
-
-        viewModelScope.launch {
-            try {
-                val result = provideRepo.fetchCategories()
-                categories.value = result
-
-                loading.value = false
-            } catch (e: Exception) {
-                error.value = "Error fetching categories: ${e.message}"
             }
         }
     }

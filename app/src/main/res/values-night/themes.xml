@@ -3,5 +3,25 @@
     <style name="Base.Theme.MyEcommerceApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="colorPrimary">@color/primaryDark</item>
+        <item name="colorPrimaryVariant">@color/primary_containerDark</item>
+        <item name="colorOnPrimary">@color/on_primary_containerDark</item>
+
+        <item name="colorSecondary">@color/secondaryDark</item>
+        <item name="colorSecondaryVariant">@color/secondary_containerDark</item>
+        <item name="colorOnSecondary">@color/on_secondary_containerDark</item>
+
+        <item name="colorTertiary">@color/tertiaryDark</item>
+        <item name="colorOnTertiary">@color/on_tertiary_containerDark</item>
+
+        <item name="android:windowBackground">@color/backgroundDark</item>
+        <item name="colorOnBackground">@color/on_backgroundDark</item>
+
+        <item name="colorSurface">@color/surfaceDark</item>
+        <item name="colorOnSurface">@color/on_surfaceDark</item>
+
+        <item name="colorError">@color/errorDark</item>
+        <item name="colorOnError">@color/on_errorDark</item>
     </style>
 </resources>

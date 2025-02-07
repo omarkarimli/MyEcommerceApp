@@ -35,6 +35,8 @@ class LoginViewModel @Inject constructor(
                         sharedPreferences
                             .edit()
                             .putBoolean(Constants.IS_LOGGED_KEY, isChecked)
+                            .putBoolean(Constants.IS_NOTI, true)
+                            .putBoolean(Constants.DARK_MODE, false)
                             .apply()
 
                         // Navigate to the home screen

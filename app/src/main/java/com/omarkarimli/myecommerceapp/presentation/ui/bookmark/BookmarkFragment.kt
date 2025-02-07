@@ -47,7 +47,7 @@ class BookmarkFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.fetchBookmarkedIds()
+        viewModel.fetchCategories()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,10 +56,7 @@ class BookmarkFragment: Fragment() {
         binding.rvProducts.adapter = productAdapter
         binding.rvCategories.adapter = categoryAdapter
 
-        binding.back.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
+        binding.back.setOnClickListener { findNavController().navigateUp() }
         productAdapter.onItemClick = {
             val action = BookmarkFragmentDirections.actionBookmarkFragmentToProductFragment(it.id!!, Constants.BOOKMARKS)
             findNavController().navigate(action)
@@ -71,6 +68,26 @@ class BookmarkFragment: Fragment() {
     }
 
     private fun observeData() {
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.progressBar.visibleItem()
+                binding.rvProducts.goneItem()
+            } else {
+                binding.progressBar.goneItem()
+                binding.rvProducts.visibleItem()
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.success.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+        }
 
         viewModel.filteredProducts.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
@@ -88,26 +105,5 @@ class BookmarkFragment: Fragment() {
             categoryAdapter.updateList(it)
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) {
-            if (it) {
-                binding.progressBar.visibleItem()
-                binding.rvProducts.goneItem()
-                binding.rvCategories.goneItem()
-            } else {
-                binding.progressBar.goneItem()
-                binding.rvProducts.visibleItem()
-                binding.rvCategories.visibleItem()
-            }
-        }
-        viewModel.error.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            }
-        }
-        viewModel.success.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 }

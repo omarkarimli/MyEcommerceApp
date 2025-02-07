@@ -19,59 +19,51 @@
         android:visibility="gone"/>
 
     <!-- App Bar -->
-    <TextView
-        android:id="@+id/textView_page_name"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
-        android:text="@string/settings"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Profile -->
-    <LinearLayout
-        android:id="@+id/layout_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_page_name">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp" >
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView_profile"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:scaleType="fitXY"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-            android:src="@drawable/default_profile"/>
 
         <TextView
             android:id="@+id/textView_name_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:text="John Doe"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
-    </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/default_profile"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Main Settings -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
         android:layout_marginTop="32dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_profile"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="1dp">
+        app:layout_constraintTop_toBottomOf="@id/appBar" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,8 +95,8 @@
                     android:id="@+id/switch_notifications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:trackTint="@color/transparent"
                     app:thumbIcon="@drawable/baseline_close_24"
+                    app:trackTint="@color/surface"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -114,7 +106,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/gray_tone_1"/>
 
             <!-- Dark mode -->
             <LinearLayout
@@ -141,8 +134,8 @@
                     android:id="@+id/switch_dark_mode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:trackTint="@color/transparent"
                     app:thumbIcon="@drawable/baseline_close_24"
+                    app:trackTint="@color/surface"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -152,7 +145,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/gray_tone_1"/>
 
             <!-- Bookmarks -->
             <LinearLayout
@@ -187,7 +181,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/gray_tone_1"/>
 
             <!-- Language -->
             <LinearLayout
@@ -221,7 +216,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/gray_tone_1"/>
 
             <!-- Change Password -->
             <LinearLayout
@@ -258,7 +254,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- About app -->
+    <!-- About app & Privacy policy -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_about_app"
         android:layout_width="match_parent"
@@ -301,7 +297,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/gray_tone_1"/>
 
             <!-- Privacy policy -->
             <LinearLayout
@@ -328,55 +325,41 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Exit -->
+    <!-- Log out -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_exit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        android:layout_marginTop="16dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/error"
+        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardView_about_app" >
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:paddingVertical="12dp">
 
-            <!-- About us -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="12dp">
+                android:text="@string/log_out"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/background"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/log_out"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/red"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/imageView_exit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:tint="@color/red"
-                    android:src="@drawable/baseline_exit_to_app_24"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

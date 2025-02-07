@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,7 +21,6 @@ import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 
 @AndroidEntryPoint
 class ProductFragment : Fragment() {
@@ -121,7 +119,7 @@ class ProductFragment : Fragment() {
                                 if (product.isCarted) R.color.secondary_container else R.color.on_tertiary_container
                             )
                             fabAddToCart.setTextColor(ContextCompat.getColor(fabAddToCart.context,
-                                if (product.isCarted) R.color.on_tertiary_container else R.color.white
+                                if (product.isCarted) R.color.on_tertiary_container else R.color.background
                             ))
                         }
                     }

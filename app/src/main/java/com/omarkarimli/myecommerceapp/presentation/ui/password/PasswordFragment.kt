@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.FragmentPasswordBinding
 import com.omarkarimli.myecommerceapp.presentation.ui.login.LoginFragmentDirections
 import com.omarkarimli.myecommerceapp.utils.goneItem
@@ -80,6 +81,10 @@ class PasswordFragment : Fragment() {
         viewModel.success.observe(viewLifecycleOwner) { success ->
             if (success.isNotEmpty()) {
                 Toast.makeText(context, success, Toast.LENGTH_LONG).show()
+
+                if (success == R.string.password_changed.toString()) {
+                    viewModel.sendPasswordChangedNotification(requireContext())
+                }
             }
         }
     }

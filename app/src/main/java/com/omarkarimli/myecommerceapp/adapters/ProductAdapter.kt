@@ -38,8 +38,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             textViewTitle.text = product.title
 
             if (product.discount != null) {
-                buttonDiscount.text = "${product.discount}%"
-
                 textViewPriceDiscounted.text = "$${product.discountedPrice}"
 
                 textViewPriceOriginal.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
@@ -49,10 +47,9 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             imageViewProduct.loadFirstImage(product.images)
 
             // Update button state based on isBookmarked
-            val isBookmarked = product.isBookmarked
             buttonBookmark.icon = ContextCompat.getDrawable(
                 buttonBookmark.context,
-                if (isBookmarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+                if (product.isBookmarked) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
             )
 
             //buttonBookmark.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.unbookmarked))

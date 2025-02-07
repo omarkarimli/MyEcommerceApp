@@ -1,16 +1,24 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.password
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.core.app.NotificationCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
+import com.omarkarimli.myecommerceapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PasswordViewModel @Inject constructor(
-    private val provideRepo: MyEcommerceRepository
+    private val provideRepo: MyEcommerceRepository,
+    private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
     val isNavigating: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -29,7 +37,7 @@ class PasswordViewModel @Inject constructor(
                             provideRepo.changePassword(currentPassword)
 
                             isNavigating.value = true
-                            success.value = "Password updated successfully"
+                            success.value = R.string.password_changed.toString()
                         } catch (e: Exception) {
                             error.value = "Error updating password: ${e.message}"
                         }
@@ -42,6 +50,40 @@ class PasswordViewModel @Inject constructor(
             }
         } else {
             error.value = "Fill Gaps!"
+        }
+    }
+
+    fun sendPasswordChangedNotification(applicationContext: Context) {
+        val isNoti = sharedPreferences.getBoolean(Constants.IS_NOTI, true)
+
+        if (isNoti) {
+            val channelId = "password_change_channel"
+            val notificationId = 1
+
+            // Create Notification Manager
+            val notificationManager =
+                applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            // Create Notification Channel (for Android 8.0+)
+            val channel = NotificationChannel(
+                channelId,
+                "Password Change Notifications",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Notifies when the password is changed"
+            }
+            notificationManager.createNotificationChannel(channel)
+
+            // Build Notification
+            val notificationBuilder = NotificationCompat.Builder(applicationContext, channelId)
+                .setSmallIcon(R.drawable.app_icon)
+                .setContentTitle("Password Changed")
+                .setContentText("Your password has been successfully updated.")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true)
+
+            // Show Notification
+            notificationManager.notify(notificationId, notificationBuilder.build())
         }
     }
 }

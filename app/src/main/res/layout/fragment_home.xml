@@ -7,17 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.home.HomeFragment" >
 
-    <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- State -->
     <LinearLayout
         android:visibility="gone"
@@ -96,11 +85,12 @@
 
     <!-- Search Bar -->
     <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
         android:id="@+id/textInputLayout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/search"
-        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
         app:startIconDrawable="@drawable/baseline_search_24"
         app:endIconMode="clear_text"
         android:layout_marginTop="20dp"
@@ -148,7 +138,7 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:visibility="gone" />
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_products"
@@ -158,12 +148,23 @@
                 android:paddingBottom="16dp"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
