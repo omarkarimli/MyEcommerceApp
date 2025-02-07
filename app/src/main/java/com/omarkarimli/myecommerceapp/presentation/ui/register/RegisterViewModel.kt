@@ -32,8 +32,7 @@ class RegisterViewModel @Inject constructor(
                             val userData = hashMapOf(
                                 Constants.NAME to name,
                                 Constants.SURNAME to surname,
-                                Constants.BOOKMARKED_IDS to arrayListOf<Int>(),
-                                Constants.CARTED_IDS to arrayListOf<Int>()
+                                Constants.BOOKMARKED_IDS to arrayListOf<Int>()
                             )
                             provideRepo.addUserToFirestore(userData)
 

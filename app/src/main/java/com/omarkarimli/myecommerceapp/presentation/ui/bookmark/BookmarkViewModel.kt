@@ -1,6 +1,5 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.bookmark
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,24 +16,14 @@ class BookmarkViewModel @Inject constructor(
     private val provideRepo: MyEcommerceRepository
 ) : ViewModel() {
 
-    private val _categories = MutableLiveData<List<CategoryModel>>()
-    val categories: LiveData<List<CategoryModel>> = _categories
-
-    private val _products = MutableLiveData<List<ProductModel>>()
-    private val _filteredProducts = MutableLiveData<List<ProductModel>>()
-    val filteredProducts: LiveData<List<ProductModel>> = _filteredProducts
-
-    private val _bookmarkedIds = MutableLiveData<List<Int>>()
-    private val bookmarkedIds: LiveData<List<Int>> = _bookmarkedIds
+    val categories: MutableLiveData<List<CategoryModel>> = MutableLiveData()
+    val filteredProducts: MutableLiveData<List<ProductModel>> = MutableLiveData()
+    private val products: MutableLiveData<List<ProductModel>> = MutableLiveData()
+    private val bookmarkedIds: MutableLiveData<List<Int>> = MutableLiveData()
 
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val error: MutableLiveData<String> = MutableLiveData()
     val success: MutableLiveData<String> = MutableLiveData()
-
-    init {
-        fetchCategories()
-        fetchBookmarkedIds()
-    }
 
     private fun fetchProducts() {
         loading.value = true
@@ -42,17 +31,11 @@ class BookmarkViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchProducts()
-                val productList = result.toObjects(ProductModel::class.java)
 
-                var newList = productList.map { product ->
-                    val isBookmarked = bookmarkedIds.value?.any { it == product.id } ?: false
-                    product.copy(isBookmarked = isBookmarked)
-                }
+                products.value = result
+                filteredProducts.value = result
 
-                newList = newList.filter { it.isBookmarked }
-
-                _products.value = newList
-                _filteredProducts.value = newList
+                fetchCategories()
 
                 loading.value = false
             } catch (e: Exception) {
@@ -65,7 +48,7 @@ class BookmarkViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchBookmarkedIds()
-                _bookmarkedIds.value = result
+                bookmarkedIds.value = result
 
                 fetchProducts()
             } catch (e: Exception) {
@@ -80,12 +63,7 @@ class BookmarkViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = provideRepo.fetchCategories()
-                val categoryList = result.toObjects(CategoryModel::class.java)
-
-                // Add "All" category at the beginning
-                categoryList.add(0, CategoryModel(0, Constants.ALL))
-
-                _categories.value = categoryList
+                categories.value = result
 
                 loading.value = false
             } catch (e: Exception) {
@@ -95,34 +73,33 @@ class BookmarkViewModel @Inject constructor(
     }
 
     fun filterProductsByCategory(categoryName: String) {
-        val allProducts = _products.value ?: return
-        _filteredProducts.value = if (categoryName == Constants.ALL) {
-            allProducts // Show all products
+        val allProducts = products.value ?: return
+        filteredProducts.value = if (categoryName == Constants.ALL) {
+            allProducts
         } else {
             allProducts.filter { it.category == categoryName }
         }
     }
 
     fun toggleBookmark(productId: Int) {
-        val newBookmarks = _bookmarkedIds.value?.toMutableList() ?: mutableListOf()
-
-        if (newBookmarks.isEmpty() || !newBookmarks.any { it == productId }) {
-            newBookmarks.add(productId)
-        } else {
-            // index always makes -1 problem
-            for (i in newBookmarks.indices) {
-                if (newBookmarks[i] == productId) {
-                    newBookmarks.removeAt(i)
-                    break
-                }
-            }
-        }
-
         viewModelScope.launch {
             try {
+                val newBookmarks = bookmarkedIds.value?.toMutableList() ?: mutableListOf()
+                if (newBookmarks.isEmpty() || !newBookmarks.any { it == productId }) {
+                    newBookmarks.add(productId)
+                } else {
+                    // index always makes -1 problem
+                    for (i in newBookmarks.indices) {
+                        if (newBookmarks[i] == productId) {
+                            newBookmarks.removeAt(i)
+                            break
+                        }
+                    }
+                }
+
                 provideRepo.updateBookmark(newBookmarks)
 
-                _bookmarkedIds.value = newBookmarks
+                bookmarkedIds.value = newBookmarks
                 fetchBookmarkedIds()
                 success.value = "Bookmark updated successfully"
             } catch (e: Exception) {
@@ -130,5 +107,4 @@ class BookmarkViewModel @Inject constructor(
             }
         }
     }
-
 }

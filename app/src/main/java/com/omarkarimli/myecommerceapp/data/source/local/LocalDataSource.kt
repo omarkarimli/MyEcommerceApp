@@ -4,11 +4,15 @@ import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 
 interface LocalDataSource {
 
-    suspend fun getAll(): List<ProductModel>
+    suspend fun getAllLocally(): List<ProductModel>
 
-    suspend fun delete(productModel: ProductModel)
+    suspend fun deleteProductLocally(productModel: ProductModel)
 
-    suspend fun getProductById(productId: Int): ProductModel?
+    suspend fun getProductByIdLocally(productId: Int): ProductModel?
 
-    suspend fun addProduct(productModel: ProductModel)
+    suspend fun addProductLocally(productModel: ProductModel)
+
+    suspend fun updateProductLocally(productModel: ProductModel)
+
+    suspend fun deleteAllLocally()
 }

@@ -59,6 +59,14 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="source"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:popUpTo="@id/productFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"

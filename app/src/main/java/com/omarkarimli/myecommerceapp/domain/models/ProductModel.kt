@@ -2,10 +2,24 @@ package com.omarkarimli.myecommerceapp.domain.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.omarkarimli.myecommerceapp.data.source.local.Converters
 
 @Entity
+@TypeConverters(Converters::class)
 data class ProductModel (
+    @PrimaryKey(autoGenerate = true)
+    val localId: Int? = null,
+
+    @SerializedName("id")
+    val id: Int? = null,
+    @SerializedName("productDetails")
+    val productDetails: ProductDetail? = null,
+    @SerializedName("seller")
+    val seller: String? = null,
+    @SerializedName("title")
+    val title: String? = null,
     @SerializedName("averageRating")
     val averageRating: Double? = null,
     @SerializedName("brand")
@@ -17,27 +31,19 @@ data class ProductModel (
     @SerializedName("description")
     val description: String? = null,
     @SerializedName("discount")
-    val discount: Int? = null,
-    @PrimaryKey
-    @SerializedName("id")
-    val id: Int? = null,
+    val discount: Double? = null,
     @SerializedName("images")
     val images: ArrayList<String?>? = null,
     @SerializedName("originalPrice")
-    val originalPrice: Int? = null,
+    val originalPrice: Double? = null,
     @SerializedName("outOfStock")
     val outOfStock: Boolean? = null,
-    @SerializedName("productDetails")
-    val productDetails: ProductDetail? = null,
-    @SerializedName("seller")
-    val seller: String? = null,
-    @SerializedName("title")
-    val title: String? = null,
 
-    val isBookmarked: Boolean = false,
+    val isCarted: Boolean = false,
+    var isBookmarked: Boolean = false,
     val selectedColor: String? = null,
 
     val numberOfProduct: Int = 1,
-    val totalPrice: Double = 0.0,
-    val isCarted: Boolean = false
+    val discountedPrice: Double = 0.0,
+    val totalPrice: Double = 0.0
 )

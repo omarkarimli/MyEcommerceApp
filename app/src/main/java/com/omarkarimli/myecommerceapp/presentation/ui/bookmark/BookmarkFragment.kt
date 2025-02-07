@@ -11,6 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.omarkarimli.myecommerceapp.adapters.CategoryAdapter
 import com.omarkarimli.myecommerceapp.adapters.ProductAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentBookmarkBinding
+import com.omarkarimli.myecommerceapp.presentation.ui.home.HomeFragmentDirections
+import com.omarkarimli.myecommerceapp.presentation.ui.settings.SettingsFragmentDirections
+import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.goneItem
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +47,6 @@ class BookmarkFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        // Refresh bookmark data when returning to HomeFragment
         viewModel.fetchBookmarkedIds()
     }
 
@@ -59,17 +61,11 @@ class BookmarkFragment: Fragment() {
         }
 
         productAdapter.onItemClick = {
-            val action = BookmarkFragmentDirections.actionBookmarkFragmentToProductFragment(it.id!!)
+            val action = BookmarkFragmentDirections.actionBookmarkFragmentToProductFragment(it.id!!, Constants.BOOKMARKS)
             findNavController().navigate(action)
         }
-
-        productAdapter.onBookmarkClick = {
-            viewModel.toggleBookmark(it)
-        }
-
-        categoryAdapter.onItemClick = {
-            viewModel.filterProductsByCategory(it)
-        }
+        productAdapter.onBookmarkClick = { viewModel.toggleBookmark(it) }
+        categoryAdapter.onItemClick = { viewModel.filterProductsByCategory(it) }
 
         observeData()
     }
@@ -77,12 +73,12 @@ class BookmarkFragment: Fragment() {
     private fun observeData() {
 
         viewModel.filteredProducts.observe(viewLifecycleOwner) {
-            productAdapter.updateProductList(it)
-
             if (it.isEmpty()) {
                 binding.rvProducts.goneItem()
                 binding.containerState.visibleItem()
             } else {
+                productAdapter.updateProductList(it)
+
                 binding.rvProducts.visibleItem()
                 binding.containerState.goneItem()
             }
@@ -103,13 +99,11 @@ class BookmarkFragment: Fragment() {
                 binding.rvCategories.visibleItem()
             }
         }
-
         viewModel.error.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         }
-
         viewModel.success.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()

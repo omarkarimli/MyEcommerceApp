@@ -95,7 +95,7 @@
         android:layout_margin="4dp"
         android:contentDescription="@string/bookmark"
         app:icon="@drawable/baseline_bookmark_border_24"
-        app:iconTint="@color/on_tertiary_container"
+        app:iconTint="@color/primary"
         android:backgroundTint="@color/white"
         style="?attr/materialIconButtonFilledTonalStyle"
         app:layout_constraintTop_toTopOf="parent"

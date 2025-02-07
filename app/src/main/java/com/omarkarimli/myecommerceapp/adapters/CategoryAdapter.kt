@@ -39,14 +39,13 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
         holder.binding.apply {
             buttonCategory.text = categoryModel.name
 
-
-
             // Set button background color based on selection
             val isSelected = (categoryModel.name == selectedCategoryName)
-            val backgroundColor = if (isSelected) ContextCompat.getColor(root.context, R.color.tertiary_container) else ContextCompat.getColor(root.context, R.color.transparent)
+            val backgroundColor = ContextCompat.getColor(
+                root.context,
+                if (isSelected) R.color.tertiary_container else R.color.transparent
+            )
             buttonCategory.setBackgroundColor(backgroundColor)
-
-
 
             root.setOnClickListener {
                 if (selectedCategoryName != categoryModel.name) {

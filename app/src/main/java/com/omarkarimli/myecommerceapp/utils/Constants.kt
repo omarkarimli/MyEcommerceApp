@@ -19,8 +19,10 @@ object Constants {
     const val NAME = "name"
     const val SURNAME = "surname"
     const val BOOKMARKED_IDS = "bookmarkedIds"
-    const val CARTED_IDS = "cartedIds"
     const val PRODUCTS = "products"
     const val CATEGORIES = "categories"
     const val ALL = "All"
+    const val CART = "cart"
+    const val HOME = "home"
+    const val BOOKMARKS = "bookmarks"
 }

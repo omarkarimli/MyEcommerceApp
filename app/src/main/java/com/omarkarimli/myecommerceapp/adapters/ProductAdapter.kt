@@ -44,12 +44,10 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         holder.binding.apply {
             textViewTitle.text = product.title
 
-            val discount = product.discount ?: 0
             if (product.discount != null) {
                 buttonDiscount.text = "${product.discount}%"
 
-                val priceDiscounted = product.originalPrice!! - (product.originalPrice * discount) / 100
-                textViewPriceDiscounted.text = "$$priceDiscounted"
+                textViewPriceDiscounted.text = "$${product.discountedPrice}"
 
                 textViewPriceOriginal.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 textViewPriceOriginal.text = "$${product.originalPrice}"
@@ -67,14 +65,8 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             //buttonBookmark.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.unbookmarked))
 
             // Handle bookmark button click
-            buttonBookmark.setOnClickListener {
-                onBookmarkClick(product.id!!)
-            }
-
-            root.setOnClickListener {
-                onItemClick(product)
-            }
-
+            buttonBookmark.setOnClickListener { onBookmarkClick(product.id!!) }
+            root.setOnClickListener { onItemClick(product) }
         }
     }
 

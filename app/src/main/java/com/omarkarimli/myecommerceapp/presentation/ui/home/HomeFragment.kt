@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.omarkarimli.myecommerceapp.adapters.CategoryAdapter
 import com.omarkarimli.myecommerceapp.adapters.ProductAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentHomeBinding
+import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.goneItem
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +46,6 @@ class HomeFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        // Refresh bookmark data when returning to HomeFragment
         viewModel.fetchBookmarkedIds()
     }
 
@@ -56,17 +56,11 @@ class HomeFragment: Fragment() {
         binding.rvCategories.adapter = categoryAdapter
 
         productAdapter.onItemClick = {
-            val action = HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id!!)
+            val action = HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id!!, Constants.HOME)
             findNavController().navigate(action)
         }
-
-        productAdapter.onBookmarkClick = {
-            viewModel.toggleBookmark(it)
-        }
-
-        categoryAdapter.onItemClick = {
-            viewModel.filterProductsByCategory(it)
-        }
+        productAdapter.onBookmarkClick = { viewModel.toggleBookmark(it) }
+        categoryAdapter.onItemClick = { viewModel.filterProductsByCategory(it) }
 
         binding.editTextSearch.doOnTextChanged { inputText, _, _, _ ->
             if (inputText.toString().isNotEmpty()) {
@@ -91,22 +85,6 @@ class HomeFragment: Fragment() {
 
     private fun observeData() {
 
-        viewModel.filteredProducts.observe(viewLifecycleOwner) {
-            productAdapter.updateProductList(it)
-
-            if (it.isEmpty()) {
-                binding.rvProducts.goneItem()
-                binding.containerState.visibleItem()
-            } else {
-                binding.rvProducts.visibleItem()
-                binding.containerState.goneItem()
-            }
-        }
-
-        viewModel.categories.observe(viewLifecycleOwner) {
-            categoryAdapter.updateList(it)
-        }
-
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
                 binding.progressBar.visibleItem()
@@ -118,17 +96,31 @@ class HomeFragment: Fragment() {
                 binding.rvCategories.visibleItem()
             }
         }
-
         viewModel.error.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         }
-
         viewModel.success.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
+        }
+
+        viewModel.filteredProducts.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.rvProducts.goneItem()
+                binding.containerState.visibleItem()
+            } else {
+                productAdapter.updateProductList(it)
+
+                binding.rvProducts.visibleItem()
+                binding.containerState.goneItem()
+            }
+        }
+
+        viewModel.categories.observe(viewLifecycleOwner) {
+            categoryAdapter.updateList(it)
         }
     }
 }

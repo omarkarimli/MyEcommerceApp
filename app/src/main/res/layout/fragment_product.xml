@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/bookmark"
                     app:icon="@drawable/baseline_bookmark_border_24"
-                    app:iconTint="@color/on_tertiary_container"
+                    app:iconTint="@color/primary"
                     android:backgroundTint="@color/white"
                     style="?attr/materialIconButtonFilledTonalStyle"
                     android:layout_marginTop="16dp"
@@ -173,7 +173,8 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@drawable/star" />
+                        android:src="@drawable/star"
+                        android:contentDescription="@string/rating"/>
 
                     <TextView
                         android:id="@+id/textView_rating"
@@ -217,40 +218,55 @@
                             android:layout_height="wrap_content"
                             android:text="$198"
                             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-                            android:textColor="@color/secondary"
+                            android:textColor="@color/gray"
                             android:layout_marginStart="16dp" />
                     </LinearLayout>
 
-                    <LinearLayout
+
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center" >
+                        android:backgroundTint="@color/light_gray"
+                        android:layout_margin="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" >
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/button_minus"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:icon="@drawable/baseline_remove_24"
-                            style="?attr/materialIconButtonFilledTonalStyle" />
+                            android:gravity="center"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/textView_number_of_product"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                            android:padding="16dp"
-                            />
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/button_minus"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                app:iconGravity="textEnd"
+                                app:icon="@drawable/baseline_remove_24"
+                                app:iconTint="@color/primary"
+                                style="?attr/materialIconButtonFilledTonalStyle"
+                                android:backgroundTint="@color/transparent"/>
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/button_plus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/baseline_add_24"
-                            style="?attr/materialIconButtonFilledTonalStyle" />
+                            <TextView
+                                android:id="@+id/textView_number_of_product"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="1"
+                                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
-                    </LinearLayout>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/button_plus"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                app:iconGravity="textEnd"
+                                app:icon="@drawable/baseline_add_24"
+                                app:iconTint="@color/primary"
+                                style="?attr/materialIconButtonFilledTonalStyle"
+                                android:backgroundTint="@color/transparent"/>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 
