@@ -45,6 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="No bookmark found"
+            android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         <TextView
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="No bookmark found. You can add later."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@color/secondary"
+            android:textColor="?colorOnSecondaryFixedVariant"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,6 +78,7 @@
             android:contentDescription="@string/back"
             android:clickable="true"
             android:src="@drawable/baseline_arrow_back_24"
+            app:tint="?colorOnSecondaryContainer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -86,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bookmarks"
+            android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

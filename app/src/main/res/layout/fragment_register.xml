@@ -31,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up for Free"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -133,58 +133,13 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="@string/sign_up"
-            android:backgroundTint="@color/on_tertiary_container"
+            android:textColor="?colorSurface"
+            android:backgroundTint="?colorOnSurface"
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
             app:layout_constraintTop_toBottomOf="@id/nameSurnameFields"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
-
-        <!-- Or sign in with -->
-        <TextView
-            android:id="@+id/orSignInWith"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="or Sign Up with"
-            android:textColor="@color/secondary"
-            app:layout_constraintTop_toBottomOf="@id/signUpButton"
-            app:layout_constraintBottom_toTopOf="@id/socialButtons"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp" />
-
-        <!-- Google and Facebook buttons -->
-        <LinearLayout
-            android:id="@+id/socialButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/orSignInWith"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="28dp">
-
-            <ImageButton
-                android:id="@+id/googleSignIn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/google"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:padding="8dp"
-                android:layout_marginEnd="32dp"
-                android:contentDescription="@string/google_sign_in" />
-
-            <ImageButton
-                android:id="@+id/facebookSignIn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/facebook"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:padding="8dp"
-                android:contentDescription="@string/facebook_sign_in" />
-        </LinearLayout>
+            android:layout_marginTop="24dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -203,6 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
+            android:textColor="?colorOnSecondaryContainer"
             android:layout_marginEnd="4dp"/>
 
         <TextView
@@ -210,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
-            android:textColor="@color/primary"
+            android:textColor="?colorPrimary"
             android:textStyle="bold"/>
     </LinearLayout>
 

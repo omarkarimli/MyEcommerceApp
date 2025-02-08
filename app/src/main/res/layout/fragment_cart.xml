@@ -46,6 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Empty cart"
+            android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         <TextView
@@ -54,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="No product found. You can add later."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@color/secondary"
+            android:textColor="?colorOnSecondaryFixedVariant"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cart"
+            android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$0"
+            android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

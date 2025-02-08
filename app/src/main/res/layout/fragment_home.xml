@@ -30,11 +30,12 @@
             android:id="@+id/textView_state_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="No result found"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="No result found"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView_state_desc"
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="No result found. Please try again."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@color/secondary"
+            android:textColor="?colorOnSecondaryFixedVariant"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,11 +66,12 @@
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/home"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile"
@@ -129,6 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Find Your Product"
+                android:textColor="?colorOnSecondaryContainer"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
             <androidx.recyclerview.widget.RecyclerView

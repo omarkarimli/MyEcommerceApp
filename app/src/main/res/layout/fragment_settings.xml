@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="?android:colorBackground"
     tools:context=".presentation.ui.settings.SettingsFragment">
 
     <!-- Progress Bar -->
@@ -29,16 +30,16 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp" >
 
-
         <TextView
             android:id="@+id/textView_name_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="John Doe"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="John Doe"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile"
@@ -53,7 +54,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Main Settings -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCardViewFilledStyle"
+        app:cardBackgroundColor="?colorSurface"
         android:id="@+id/cardView_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,21 +85,23 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@drawable/baseline_notifications_24"
-                    app:tint="@color/gray" />
+                    app:tint="?colorOnSecondaryContainer" />
 
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/notifications"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/switch_notifications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:thumbIcon="@drawable/baseline_close_24"
-                    app:trackTint="@color/surface"
+                    app:thumbTint="?colorOnSecondaryContainer"
+                    app:trackTint="?colorSecondaryContainer"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -107,7 +112,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_tone_1"/>
+                app:dividerColor="?attr/colorOutlineVariant" />
 
             <!-- Dark mode -->
             <LinearLayout
@@ -121,21 +126,23 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@drawable/baseline_dark_mode_24"
-                    app:tint="@color/gray" />
+                    app:tint="?colorOnSecondaryContainer" />
 
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/dark_mode"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/switch_dark_mode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:thumbIcon="@drawable/baseline_close_24"
-                    app:trackTint="@color/surface"
+                    app:thumbTint="?colorOnSecondaryContainer"
+                    app:trackTint="?colorSecondaryContainer"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +153,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_tone_1"/>
+                app:dividerColor="?attr/colorOutlineVariant" />
 
             <!-- Bookmarks -->
             <LinearLayout
@@ -161,28 +168,29 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@drawable/baseline_bookmark_24"
-                    app:tint="@color/gray" />
+                    app:tint="?colorOnSecondaryContainer" />
 
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/bookmarks"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
-                    app:tint="@color/tertiary"
-                    android:src="@drawable/baseline_arrow_forward_24"/>
+                    android:src="@drawable/baseline_arrow_forward_24"
+                    app:tint="?colorOnSecondaryContainer" />
 
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_tone_1"/>
+                app:dividerColor="?attr/colorOutlineVariant" />
 
             <!-- Language -->
             <LinearLayout
@@ -196,28 +204,29 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@drawable/baseline_language_24"
-                    app:tint="@color/gray" />
+                    app:tint="?colorOnSecondaryContainer" />
 
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/language"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
-                    app:tint="@color/tertiary"
-                    android:src="@drawable/baseline_arrow_forward_24"/>
+                    android:src="@drawable/baseline_arrow_forward_24"
+                    app:tint="?colorOnSecondaryContainer" />
 
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_tone_1"/>
+                app:dividerColor="?attr/colorOutlineVariant" />
 
             <!-- Change Password -->
             <LinearLayout
@@ -232,30 +241,33 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@drawable/baseline_password_24"
-                    app:tint="@color/gray" />
+                    app:tint="?colorOnSecondaryContainer" />
 
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/change_password"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
-                    app:tint="@color/tertiary"
-                    android:src="@drawable/baseline_arrow_forward_24"/>
+                    android:src="@drawable/baseline_arrow_forward_24"
+                    app:tint="?colorOnSecondaryContainer" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- About app & Privacy policy -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCardViewFilledStyle"
+        app:cardBackgroundColor="?colorSurface"
         android:id="@+id/cardView_about_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -285,20 +297,21 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/about_us"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:tint="@color/tertiary"
-                    android:src="@drawable/baseline_arrow_forward_24"/>
+                    android:src="@drawable/baseline_arrow_forward_24"
+                    app:tint="?colorOnSecondaryContainer" />
 
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_tone_1"/>
+                app:dividerColor="?attr/colorOutlineVariant" />
 
             <!-- Privacy policy -->
             <LinearLayout
@@ -313,26 +326,27 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/privacy_policy"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?colorOnSecondaryContainer" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:tint="@color/tertiary"
-                    android:src="@drawable/baseline_arrow_forward_24"/>
+                    android:src="@drawable/baseline_arrow_forward_24"
+                    app:tint="?colorOnSecondaryContainer" />
 
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Log out -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView_exit"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/error"
+        app:cardBackgroundColor="?attr/colorError"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -350,7 +364,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/log_out"
                 android:layout_marginStart="16dp"
-                android:textColor="@color/background"
+                android:textColor="?attr/colorOnError"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 app:layout_constraintStart_toStartOf="parent"
@@ -360,6 +374,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

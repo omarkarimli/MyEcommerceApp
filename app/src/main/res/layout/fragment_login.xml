@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_arrow_back_24"
+        app:tint="?colorOnSecondaryContainer"
         android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign in to Your Account"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -84,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remember_me"
+            android:textColor="?colorOnSecondaryContainer"
             app:layout_constraintTop_toBottomOf="@id/textInputLayout_password"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp" />
@@ -94,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
-            android:textColor="@color/primary"
+            android:textColor="?colorPrimary"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="@id/rememberMe"
             app:layout_constraintBottom_toBottomOf="@id/rememberMe"
@@ -116,7 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="@string/sign_in"
-                android:backgroundTint="@color/on_tertiary_container"
+                android:textColor="?colorSurface"
+                android:backgroundTint="?colorOnSurface"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,52 +128,6 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Or sign in with -->
-        <TextView
-            android:id="@+id/orSignInWith"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="or Sign in with"
-            android:textColor="@color/secondary"
-            app:layout_constraintTop_toBottomOf="@id/signInButtonContainer"
-            app:layout_constraintBottom_toTopOf="@id/socialButtons"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp" />
-
-        <!-- Google and Facebook buttons -->
-        <LinearLayout
-            android:id="@+id/socialButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/orSignInWith"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="28dp">
-
-            <ImageButton
-                android:id="@+id/googleSignIn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/google"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:padding="8dp"
-                android:layout_marginEnd="32dp"
-                android:contentDescription="@string/google_sign_in" />
-
-            <ImageButton
-                android:id="@+id/facebookSignIn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/facebook"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:padding="8dp"
-                android:contentDescription="@string/facebook_sign_in" />
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,6 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_account"
+            android:textColor="?colorOnSecondaryContainer"
             android:layout_marginEnd="4dp"/>
 
         <TextView
@@ -195,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
-            android:textColor="@color/primary"
+            android:textColor="?colorPrimary"
             android:textStyle="bold" />
     </LinearLayout>
 
