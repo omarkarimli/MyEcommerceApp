@@ -6,18 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:paddingTop="32dp" >
+    android:paddingHorizontal="16dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView_product"
         android:layout_width="116dp"
         android:layout_height="116dp"
         android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/avatars"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView_title"
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Product Title"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="?colorOnSecondaryContainer"
         android:textAlignment="textStart"
         android:ellipsize="end"
@@ -38,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Brand"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="?colorOnSurfaceVariant"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/textView_title"
         app:layout_constraintStart_toStartOf="@id/textView_title" />
 
@@ -48,28 +49,21 @@
         android:id="@+id/textView_product_total_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
         android:text="$145"
-        android:textColor="?colorOnSecondaryContainer"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textColor="?colorOnSecondaryContainer"
         app:layout_constraintBottom_toBottomOf="@id/imageView_product"
-        app:layout_constraintStart_toStartOf="@id/textView_title" />
-
-    <ImageView
-        android:id="@+id/imageView_remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_close_24"
-        app:tint="?colorOnSurfaceVariant"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toTopOf="@id/imageView_product"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/textView_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView_product_brand"
+        android:layout_marginTop="16dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/imageView_remove"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/imageView_product" >
 
         <com.google.android.material.button.MaterialButton
@@ -104,12 +98,43 @@
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_remove"
         app:layout_constraintTop_toBottomOf="@id/imageView_product"/>
+
+    <LinearLayout
+        android:id="@+id/layout_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        android:paddingVertical="16dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_outline_24"
+            app:tint="?colorOnSurfaceVariant"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_item"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="?colorOnSurfaceVariant"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintTop_toBottomOf="@id/textView_title"
+            app:layout_constraintStart_toStartOf="@id/textView_title" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

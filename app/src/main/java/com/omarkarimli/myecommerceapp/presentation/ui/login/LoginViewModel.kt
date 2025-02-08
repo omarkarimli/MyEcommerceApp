@@ -1,6 +1,7 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.login
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -44,7 +45,8 @@ class LoginViewModel @Inject constructor(
                     }
                 } catch (e: Exception) {
                     loading.value = false
-                    error.value = "User Not Found"
+                    error.value = e.message
+                    Log.e("555", "Error: ${e.message}")
                 }
             }
         } else {

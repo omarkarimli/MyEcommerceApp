@@ -31,12 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageView
-            android:id="@+id/imageView_state"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:src="@drawable/empty_cart"/>
-
         <TextView
             android:id="@+id/textView_state_title"
             android:layout_width="wrap_content"
@@ -45,6 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="No bookmark found"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
@@ -89,6 +84,7 @@
             android:layout_height="wrap_content"
             android:text="@string/bookmarks"
             android:textColor="?colorOnSecondaryContainer"
+            android:fontFamily="@font/poppins_medium"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

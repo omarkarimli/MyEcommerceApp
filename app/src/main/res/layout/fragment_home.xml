@@ -20,17 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageView
-            android:id="@+id/imageView_state"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:src="@drawable/no_result"/>
-
         <TextView
             android:id="@+id/textView_state_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No result found"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,6 +63,7 @@
             android:layout_height="wrap_content"
             android:text="@string/home"
             android:textColor="?colorOnSecondaryContainer"
+            android:fontFamily="@font/poppins_medium"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,55 +105,47 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Scroll View -->
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/find_your_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Your Product"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="?colorOnSecondaryContainer"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout_search"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout_search"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/rv_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/find_your_product" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find Your Product"
-                android:textColor="?colorOnSecondaryContainer"
-                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_categories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_products"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                android:layout_gravity="center"/>
-
-        </LinearLayout>
-
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/rv_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_categories" />
 
     <!-- Progress Bar -->
     <ProgressBar

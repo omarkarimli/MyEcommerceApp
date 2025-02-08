@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_arrow_back_24"
+        app:tint="?colorOnSecondaryContainer"
         android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Sign Up for Free"
             android:textColor="?colorOnSecondaryContainer"
+            android:fontFamily="@font/poppins_medium"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/email_address"
+                android:fontFamily="@font/poppins_regular"
                 android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -77,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/password"
+                android:fontFamily="@font/poppins_regular"
                 android:autofillHints="password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -106,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/name"
+                    android:fontFamily="@font/poppins_regular"
                     android:autofillHints="name"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +128,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/surname"
+                    android:fontFamily="@font/poppins_regular"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -131,11 +137,14 @@
         <Button
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="58dp"
             android:text="@string/sign_up"
             android:textColor="?colorSurface"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="true"
             android:backgroundTint="?colorOnSurface"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
             app:layout_constraintTop_toBottomOf="@id/nameSurnameFields"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,6 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="?colorOnSecondaryContainer"
             android:layout_marginEnd="4dp"/>
 
@@ -166,6 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorPrimary"
             android:textStyle="bold"/>
     </LinearLayout>

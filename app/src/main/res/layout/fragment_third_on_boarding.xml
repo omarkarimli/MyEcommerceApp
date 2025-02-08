@@ -12,16 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/onboarding3"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Over Products are\nwaiting for You"
+        android:text="Choose\nwhat you want"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="?colorOnSecondaryContainer"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
         android:layout_marginStart="32dp"

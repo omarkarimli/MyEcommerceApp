@@ -35,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="John Doe"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
@@ -92,6 +93,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/notifications"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -132,6 +134,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/dark_mode"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -173,6 +176,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/bookmarks"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -209,6 +213,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/language"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -246,6 +251,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/change_password"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -295,6 +301,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/about_us"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -324,6 +331,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/privacy_policy"
+                    android:fontFamily="@font/poppins_regular"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?colorOnSecondaryContainer" />
 
@@ -338,40 +346,22 @@
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Log out -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView_exit"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_log_out"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="?attr/colorError"
-        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_to_cart"
+        android:text="@string/log_out"
+        android:textAllCaps="true"
+        android:textColor="?colorSurface"
+        android:backgroundTint="?colorOnSurface"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView_about_app" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingVertical="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/log_out"
-                android:layout_marginStart="16dp"
-                android:textColor="?attr/colorOnError"
-                android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

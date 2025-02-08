@@ -32,12 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageView
-            android:id="@+id/imageView_state"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:src="@drawable/empty_cart"/>
-
         <TextView
             android:id="@+id/textView_state_title"
             android:layout_width="wrap_content"
@@ -46,6 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Empty cart"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
@@ -80,22 +75,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cart"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_total_cart_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$0"
-            android:textColor="?colorOnSecondaryContainer"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,7 +96,61 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_gravity="start">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amt. to be paid"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="?colorOnSecondaryContainer" />
+
+            <TextView
+                android:id="@+id/textView_total_cart_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$56.0"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="?colorOnSecondaryContainer"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+        </LinearLayout>
+
+        <Button
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/pay_now"
+            android:textColor="?colorSurface"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="true"
+            android:backgroundTint="?colorOnSurface"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

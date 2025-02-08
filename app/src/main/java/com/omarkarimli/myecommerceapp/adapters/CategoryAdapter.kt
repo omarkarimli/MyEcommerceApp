@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.ItemCategoryBinding
 import com.omarkarimli.myecommerceapp.domain.models.CategoryModel
@@ -46,11 +47,19 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
 
             val backgroundColor = MaterialColors.getColor(buttonCategory,
                 if (isSelected)
-                    com.google.android.material.R.attr.colorPrimaryContainer
+                    com.google.android.material.R.attr.colorOnSurface
                 else
-                    com.google.android.material.R.attr.colorOnPrimary
+                    com.google.android.material.R.attr.colorSurface
             )
             buttonCategory.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+
+            val textColor = MaterialColors.getColor(buttonCategory,
+                if (isSelected)
+                    com.google.android.material.R.attr.colorSurface
+                else
+                    com.google.android.material.R.attr.colorOnSurface
+            )
+            buttonCategory.setTextColor(ColorStateList.valueOf(textColor))
 
             root.setOnClickListener {
                 if (selectedCategoryName != categoryModel.name) {

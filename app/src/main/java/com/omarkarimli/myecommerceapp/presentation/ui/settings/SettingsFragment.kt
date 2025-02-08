@@ -57,7 +57,7 @@ class SettingsFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.cardViewExit.setOnClickListener {
+        binding.fabLogOut.setOnClickListener {
             buildAlertDialog(requireContext())
         }
 

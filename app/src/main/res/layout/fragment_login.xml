@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign in to Your Account"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorOnSecondaryContainer"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/email_address"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
                 android:hint="@string/password"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remember_me"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="?colorOnSecondaryContainer"
             app:layout_constraintTop_toBottomOf="@id/textInputLayout_password"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,11 +108,14 @@
             <Button
                 android:id="@+id/signInButton"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="58dp"
                 android:text="@string/sign_in"
                 android:textColor="?colorSurface"
+                android:fontFamily="@font/poppins_medium"
+                android:textAllCaps="true"
                 android:backgroundTint="?colorOnSurface"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -133,6 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_account"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="?colorOnSecondaryContainer"
             android:layout_marginEnd="4dp"/>
 
@@ -141,6 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="?colorPrimary"
             android:textStyle="bold" />
     </LinearLayout>

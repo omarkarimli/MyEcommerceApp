@@ -40,7 +40,7 @@ class CartProductAdapter: RecyclerView.Adapter<CartProductAdapter.CartProductVie
             imageViewProduct.loadFirstImage(cartProduct.images)
 
             root.setOnClickListener { onItemClick(cartProduct) }
-            imageViewRemove.setOnClickListener { onDeleteClick(cartProduct) }
+            layoutRemove.setOnClickListener { onDeleteClick(cartProduct) }
             buttonPlus.setOnClickListener { onNumberOfProductClick(cartProduct, 1) }
             buttonMinus.setOnClickListener { onNumberOfProductClick(cartProduct, -1) }
         }
