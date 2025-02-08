@@ -73,9 +73,11 @@ class BookmarkFragment: Fragment() {
             if (it) {
                 binding.progressBar.visibleItem()
                 binding.rvProducts.goneItem()
+                binding.rvCategories.goneItem()
             } else {
                 binding.progressBar.goneItem()
                 binding.rvProducts.visibleItem()
+                binding.rvCategories.visibleItem()
             }
         }
         viewModel.error.observe(viewLifecycleOwner) {

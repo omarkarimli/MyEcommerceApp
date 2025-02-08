@@ -1,6 +1,7 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.settings
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.FragmentSettingsBinding
@@ -98,32 +100,10 @@ class SettingsFragment : Fragment() {
 
         viewModel.isNoti.observe(viewLifecycleOwner) {
             binding.switchNotifications.isChecked = it
-
-            binding.switchNotifications.thumbIconDrawable = ContextCompat.getDrawable(
-                binding.switchNotifications.context,
-                if (it) R.drawable.baseline_done_24 else R.drawable.baseline_close_24
-            )
-
-            val trackColor = ContextCompat.getColorStateList(
-                requireContext(),
-                if (it) R.color.green else R.color.gray_tone_2
-            )
-            binding.switchNotifications.trackTintList = trackColor
         }
 
         viewModel.isDarkMode.observe(viewLifecycleOwner) {
             binding.switchDarkMode.isChecked = it
-
-            binding.switchDarkMode.thumbIconDrawable = ContextCompat.getDrawable(
-                binding.switchDarkMode.context,
-                if (it) R.drawable.baseline_done_24 else R.drawable.baseline_close_24
-            )
-
-            val trackColor = ContextCompat.getColorStateList(
-                requireContext(),
-                if (it) R.color.green else R.color.gray_tone_2
-            )
-            binding.switchDarkMode.trackTintList = trackColor
 
             // Apply theme
             AppCompatDelegate.setDefaultNightMode(

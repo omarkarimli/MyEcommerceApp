@@ -201,6 +201,8 @@ class ProductViewModel @Inject constructor(
                         )
                         provideRepo.addProductToLocal(productCopy)
                         success.value = "Product added to cart"
+
+                        navigatingTo.value = Constants.CART
                     } else {
                         error.value = "Please select a color"
                     }
@@ -208,9 +210,9 @@ class ProductViewModel @Inject constructor(
                     product.value = productCopy
                     provideRepo.deleteProductFromLocal(productModel)
                     success.value = "Product removed from cart"
-                }
 
-                navigatingTo.value = Constants.CART
+                    navigatingTo.value = Constants.CART
+                }
             } catch (e: Exception) {
                 error.value = "Something went wrong on clicking Add to Cart button"
                 Log.e("555", e.message!!)

@@ -7,7 +7,7 @@ import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 
 interface MyEcommerceRepository {
 
-    suspend fun changePassword(currentPassword: String) : Void?
+    suspend fun changePassword(email: String, currentPassword: String, newPassword: String)
 
     suspend fun fetchUserData(): DocumentSnapshot
 

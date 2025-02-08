@@ -20,7 +20,7 @@ class MyEcommerceRepositoryImpl @Inject constructor(
 
     override suspend fun updateBookmark(newBookmarks: MutableList<Int>) = remoteDataSource.updateBookmark(newBookmarks)
 
-    override suspend fun changePassword(currentPassword: String) = remoteDataSource.changePassword(currentPassword)
+    override suspend fun changePassword(email: String, currentPassword: String, newPassword: String) = remoteDataSource.changePassword(email, currentPassword, newPassword)
 
     override suspend fun fetchUserData() = remoteDataSource.fetchUserData()
 

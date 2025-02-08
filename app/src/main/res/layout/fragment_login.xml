@@ -47,8 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="42dp"
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
-            app:endIconMode="clear_text"
-            app:suffixText="@string/email_suffix">
+            app:suffixText="@string/email_suffix" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_email"
@@ -90,18 +89,6 @@
             app:layout_constraintTop_toBottomOf="@id/textInputLayout_password"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp" />
-
-        <!-- Forgot password -->
-        <TextView
-            android:id="@+id/forgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:textColor="?colorPrimary"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@id/rememberMe"
-            app:layout_constraintBottom_toBottomOf="@id/rememberMe"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Sign in button Container -->
         <androidx.constraintlayout.widget.ConstraintLayout

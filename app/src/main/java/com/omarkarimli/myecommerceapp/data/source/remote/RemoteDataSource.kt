@@ -11,7 +11,7 @@ import java.io.Serializable
 
 interface RemoteDataSource {
 
-    suspend fun changePassword(currentPassword: String) : Void?
+    suspend fun changePassword(email: String, currentPassword: String, newPassword: String)
 
     suspend fun fetchUserData(): DocumentSnapshot
 

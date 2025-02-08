@@ -46,21 +46,24 @@ class PasswordFragment : Fragment() {
         }
 
         binding.buttonChangePassword.setOnClickListener {
+            val email = binding.editTextEmail.text.toString().trim() + "@gmail.com"
             val currentPassword = binding.editTextCurrentPassword.text.toString()
             val newPassword = binding.editTextNewPassword.text.toString()
             val confirmNewPassword = binding.editTextConfirmNewPassword.text.toString()
 
-            viewModel.changePassword(currentPassword, newPassword, confirmNewPassword)
+            viewModel.changePassword(email, currentPassword, newPassword, confirmNewPassword)
         }
 
         observeData()
     }
 
     private fun observeData() {
-        viewModel.isNavigating.observe(viewLifecycleOwner) { isNavigating ->
-            if (isNavigating) {
-                val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-                findNavController().navigate(action)
+
+        viewModel.isNavigating.observe(viewLifecycleOwner) {
+            if (it) {
+                viewModel.sendPasswordChangedNotification(requireContext())
+
+                findNavController().navigateUp()
             }
         }
 
@@ -71,7 +74,6 @@ class PasswordFragment : Fragment() {
                 binding.progressBar.goneItem()
             }
         }
-
         viewModel.error.observe(viewLifecycleOwner) { error ->
             if (error.isNotEmpty()) {
                 Toast.makeText(context, error, Toast.LENGTH_LONG).show()
@@ -81,10 +83,6 @@ class PasswordFragment : Fragment() {
         viewModel.success.observe(viewLifecycleOwner) { success ->
             if (success.isNotEmpty()) {
                 Toast.makeText(context, success, Toast.LENGTH_LONG).show()
-
-                if (success == R.string.password_changed.toString()) {
-                    viewModel.sendPasswordChangedNotification(requireContext())
-                }
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.product
 
+import android.content.res.ColorStateList
+import android.content.res.Resources.Theme
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.color.MaterialColors
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.adapters.ColorAdapter
 import com.omarkarimli.myecommerceapp.adapters.ImagePagerAdapter
@@ -114,13 +117,22 @@ class ProductFragment : Fragment() {
                             viewModel.updateProductLocally(product)
 
                             fabAddToCart.text = if (product.isCarted) "Remove from cart" else "Add to cart"
-                            fabAddToCart.backgroundTintList = ContextCompat.getColorStateList(
-                                requireContext(),
-                                if (product.isCarted) R.color.secondary_container else R.color.on_tertiary_container
+
+                            val backgroundColor = MaterialColors.getColor(fabAddToCart,
+                                if (product.isCarted)
+                                    com.google.android.material.R.attr.colorSurface
+                                else
+                                    com.google.android.material.R.attr.colorOnPrimary
                             )
-                            fabAddToCart.setTextColor(ContextCompat.getColor(fabAddToCart.context,
-                                if (product.isCarted) R.color.on_tertiary_container else R.color.background
-                            ))
+                            fabAddToCart.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+
+                            val textColor = MaterialColors.getColor(fabAddToCart,
+                                if (product.isCarted)
+                                    com.google.android.material.R.attr.colorOnSurface
+                                else
+                                    com.google.android.material.R.attr.colorPrimary
+                            )
+                            fabAddToCart.setTextColor(ColorStateList.valueOf(textColor))
                         }
                     }
                 }

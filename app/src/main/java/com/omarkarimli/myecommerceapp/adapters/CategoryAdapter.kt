@@ -1,9 +1,11 @@
 package com.omarkarimli.myecommerceapp.adapters
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.color.MaterialColors
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.ItemCategoryBinding
 import com.omarkarimli.myecommerceapp.domain.models.CategoryModel
@@ -41,11 +43,14 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
 
             // Set button background color based on selection
             val isSelected = (categoryModel.name == selectedCategoryName)
-            val backgroundColor = ContextCompat.getColor(
-                root.context,
-                if (isSelected) R.color.tertiary_container else R.color.transparent
+
+            val backgroundColor = MaterialColors.getColor(buttonCategory,
+                if (isSelected)
+                    com.google.android.material.R.attr.colorPrimaryContainer
+                else
+                    com.google.android.material.R.attr.colorOnPrimary
             )
-            buttonCategory.setBackgroundColor(backgroundColor)
+            buttonCategory.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
             root.setOnClickListener {
                 if (selectedCategoryName != categoryModel.name) {

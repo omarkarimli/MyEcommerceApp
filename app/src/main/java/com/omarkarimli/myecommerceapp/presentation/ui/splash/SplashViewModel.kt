@@ -20,7 +20,7 @@ class SplashViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             // Wait for 2 seconds
-            delay(2000)
+            delay(3000)
 
             // Check login status
             isLogged.value = sharedPreferences.getBoolean(Constants.IS_LOGGED_KEY, false)

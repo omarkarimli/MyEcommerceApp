@@ -28,9 +28,10 @@
         android:ellipsize="end"
         android:text="Product Title"
         android:textColor="?colorOnSecondaryContainer"
-        android:maxLength="20"
+        android:maxLength="16"
+        android:maxLines="1"
         android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView_product"
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$56.0"
-            android:textColor="?colorOnSecondaryContainer"
+            android:textColor="?colorError"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
 
         <!-- Original Price -->
@@ -62,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$85.0"
-            android:textColor="?colorOnSurfaceVariant"
+            android:textColor="?colorOutline"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:layout_marginStart="8dp"/>
 

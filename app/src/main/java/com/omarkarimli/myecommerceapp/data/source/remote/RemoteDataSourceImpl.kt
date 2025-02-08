@@ -80,12 +80,20 @@ class RemoteDataSourceImpl @Inject constructor(
             .await()
     }
 
-    override suspend fun changePassword(currentPassword: String) : Void? {
-        val credential = EmailAuthProvider.getCredential(provideAuth.currentUser?.email ?: "error", currentPassword)
+    override suspend fun changePassword(email: String, currentPassword: String, newPassword: String) {
+        val user = provideAuth.currentUser ?: FirebaseAuth.getInstance().currentUser
+        val credential = EmailAuthProvider.getCredential(email, currentPassword)
 
-        return provideAuth.currentUser
-            ?.reauthenticate(credential)
-            ?.await()
+        try {
+            if (user != null) {
+                user.reauthenticate(credential).await() // Re-authenticate user
+                user.updatePassword(newPassword).await() // Update password
+            } else {
+                throw Exception("User is not authenticated")
+            }
+        } catch (e: Exception) {
+            throw e // Handle exception appropriately
+        }
     }
 
     override suspend fun fetchUserData(): DocumentSnapshot =
