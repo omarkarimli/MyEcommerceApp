@@ -47,7 +47,7 @@
             android:id="@+id/textView_page_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Details"
+            android:text="@string/product_details"
             android:textColor="?colorOnSecondaryContainer"
             android:fontFamily="@font/poppins_medium"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
@@ -55,16 +55,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_share_24"
-            app:tint="?colorOnSecondaryContainer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,7 +136,7 @@
                     android:id="@+id/product_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Product Title"
+                    android:text="@string/title"
                     android:textColor="?colorOnSecondaryContainer"
                     android:fontFamily="@font/poppins_medium"
                     android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
@@ -308,7 +298,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Color"
+                        android:text="@string/color"
                         android:textAllCaps="true"
                         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
 
