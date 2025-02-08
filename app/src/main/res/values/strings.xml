@@ -46,4 +46,7 @@
     <string name="password_changed">Password changed</string>
     <string name="remove_item">Remove Item</string>
     <string name="pay_now">Pay now</string>
+    <string name="product_details">Product Details</string>
+    <string name="title">Title</string>
+    <string name="color">Color</string>
 </resources>
