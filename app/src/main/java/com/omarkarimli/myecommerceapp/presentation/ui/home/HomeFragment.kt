@@ -1,5 +1,6 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.adapters.CategoryAdapter
 import com.omarkarimli.myecommerceapp.adapters.ProductAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentHomeBinding
@@ -46,48 +49,56 @@ class HomeFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.fetchCategories()
+        if (viewModel.isWifiConnected()) {
+            viewModel.fetchCategories()
+        } else {
+            buildAlertDialog(requireContext())
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvProducts.adapter = productAdapter
-        binding.rvCategories.adapter = categoryAdapter
+        if (!viewModel.isWifiConnected()) {
+            buildAlertDialog(requireContext())
+        } else {
+            binding.rvProducts.adapter = productAdapter
+            binding.rvCategories.adapter = categoryAdapter
 
-        productAdapter.onItemClick = {
-            val action = HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id!!, Constants.HOME)
-            findNavController().navigate(action)
-        }
-        productAdapter.onBookmarkClick = { viewModel.toggleBookmark(it) }
-        categoryAdapter.onItemClick = { viewModel.filterProductsByCategory(it) }
+            productAdapter.onItemClick = {
+                val action = HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id!!, Constants.HOME)
+                findNavController().navigate(action)
+            }
+            productAdapter.onBookmarkClick = { viewModel.toggleBookmark(it) }
+            categoryAdapter.onItemClick = { viewModel.filterProductsByCategory(it) }
 
-        binding.editTextSearch.doOnTextChanged { inputText, _, _, _ ->
-            val searchQuery = inputText.toString().trim()
+            binding.editTextSearch.doOnTextChanged { inputText, _, _, _ ->
+                val searchQuery = inputText.toString().trim()
 
-            if (searchQuery.isNotEmpty()) {
-                val searchedProducts = viewModel.filteredProducts.value?.filter { product ->
-                    product.title?.contains(searchQuery, ignoreCase = true) == true
-                }
-                productAdapter.updateProductList(searchedProducts ?: emptyList())
+                if (searchQuery.isNotEmpty()) {
+                    val searchedProducts = viewModel.filteredProducts.value?.filter { product ->
+                        product.title?.contains(searchQuery, ignoreCase = true) == true
+                    }
+                    productAdapter.updateProductList(searchedProducts ?: emptyList())
 
-                if (searchedProducts.isNullOrEmpty()) {
-                    binding.containerState.visibleItem()
-                    binding.rvProducts.goneItem()
+                    if (searchedProducts.isNullOrEmpty()) {
+                        binding.containerState.visibleItem()
+                        binding.rvProducts.goneItem()
+                    } else {
+                        binding.containerState.goneItem()
+                        binding.rvProducts.visibleItem()
+                    }
                 } else {
+                    // Reset list when search is cleared
+                    viewModel.filteredProducts.value = viewModel.products.value ?: emptyList()
+
                     binding.containerState.goneItem()
                     binding.rvProducts.visibleItem()
                 }
-            } else {
-                // Reset list when search is cleared
-                viewModel.filteredProducts.value = viewModel.products.value ?: emptyList()
-
-                binding.containerState.goneItem()
-                binding.rvProducts.visibleItem()
             }
-        }
 
-        observeData()
+            observeData()
+        }
     }
 
     private fun observeData() {
@@ -129,5 +140,18 @@ class HomeFragment: Fragment() {
         viewModel.categories.observe(viewLifecycleOwner) {
             categoryAdapter.updateList(it)
         }
+    }
+
+    private fun buildAlertDialog(context: Context) {
+        MaterialAlertDialogBuilder(context)
+            .setTitle("No connection")
+            .setMessage("Do you want to reload?")
+            .setNeutralButton(resources.getString(R.string.cancel)) { dialog, which ->
+                // Respond to neutral button press
+            }
+            .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                viewModel.fetchCategories()
+            }
+            .show()
     }
 }

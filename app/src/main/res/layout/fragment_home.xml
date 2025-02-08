@@ -56,12 +56,11 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp" >
 
-
         <TextView
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home"
+            android:text="Hello &#x1F44B;"
             android:textColor="?colorOnSecondaryContainer"
             android:fontFamily="@font/poppins_medium"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
@@ -141,7 +140,7 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

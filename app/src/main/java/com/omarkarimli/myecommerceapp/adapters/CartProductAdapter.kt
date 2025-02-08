@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.myecommerceapp.databinding.ItemCartProductBinding
 import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.utils.loadFirstImage
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 class CartProductAdapter: RecyclerView.Adapter<CartProductAdapter.CartProductViewHolder>() {
 

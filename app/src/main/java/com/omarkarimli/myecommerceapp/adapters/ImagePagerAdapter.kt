@@ -30,8 +30,8 @@ class ImagePagerAdapter(private val imageUrls: ArrayList<String?>?) : RecyclerVi
         holder.binding.apply {
             Picasso.get()
                 .load(imageUrl)
-                .placeholder(R.drawable.no_picture)
-                .error(R.drawable.baseline_error_outline_24)
+                .placeholder(R.drawable.baseline_hide_image_24)
+                .error(R.drawable.baseline_hide_image_24)
                 .into(imageView)
         }
     }

@@ -1,5 +1,8 @@
 package com.omarkarimli.myecommerceapp.presentation.ui.home
 
+import android.app.Application
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val provideRepo: MyEcommerceRepository
+    private val provideRepo: MyEcommerceRepository,
+    private val application: Application
 ) : ViewModel() {
 
     val categories: MutableLiveData<List<CategoryModel>> = MutableLiveData()
@@ -25,6 +29,14 @@ class HomeViewModel @Inject constructor(
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val error: MutableLiveData<String> = MutableLiveData()
     val success: MutableLiveData<String> = MutableLiveData()
+
+    // Check if Wi-Fi is connected
+    fun isWifiConnected(): Boolean {
+        val connectivityManager = application.getSystemService(Application.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+    }
 
     fun fetchCategories() {
         loading.value = true
