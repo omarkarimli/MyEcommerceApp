@@ -4,7 +4,7 @@ Let me introduce the project:
 MyEcommerceApp is an **Android MDC** e-commerce application built with **Kotlin**.
 It follows MVVM Architecture and implements Clean Code principles.
 
-# 🛠 Built With
+### 🛠 Built With
 MVVM with Clean Architecture
 Material Design 3
 Coroutines & Flow
