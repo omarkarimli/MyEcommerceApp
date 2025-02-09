@@ -154,11 +154,11 @@ class ProductFragment : Fragment() {
         }
 
         viewModel.totalOriginalPrice.observe(viewLifecycleOwner) {
-            binding.textViewPriceOriginal.text = "$${roundDouble(it)}"
+            binding.textViewPriceOriginal.text = "$" + roundDouble(it)
         }
 
         viewModel.totalDiscountedPrice.observe(viewLifecycleOwner) {
-            binding.textViewPriceDiscounted.text = "$${roundDouble(it)}"
+            binding.textViewPriceDiscounted.text = "$" + roundDouble(it)
         }
     }
 }

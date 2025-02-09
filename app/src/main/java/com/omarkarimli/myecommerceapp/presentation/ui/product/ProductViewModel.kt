@@ -8,6 +8,7 @@ import com.omarkarimli.myecommerceapp.domain.models.ColorModel
 import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
 import com.omarkarimli.myecommerceapp.utils.Constants
+import com.omarkarimli.myecommerceapp.utils.roundDouble
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -115,8 +116,8 @@ class ProductViewModel @Inject constructor(
         val currentTotalOriginalPrice = product.value?.originalPrice!! * numberOfProduct.value!!.toDouble()
         val currentTotalDiscountedPrice = product.value?.discountedPrice!! * numberOfProduct.value!!.toDouble()
 
-        totalOriginalPrice.value = currentTotalOriginalPrice
-        totalDiscountedPrice.value = currentTotalDiscountedPrice
+        totalOriginalPrice.value = roundDouble(currentTotalOriginalPrice)
+        totalDiscountedPrice.value = roundDouble(currentTotalDiscountedPrice)
 
         Log.e("555", totalDiscountedPrice.value.toString())
 
