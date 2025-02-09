@@ -20,6 +20,7 @@ This app also implements Light & Dark Mode Theme.
 - Firestore
 - Picasso
 - DotsIndicator
+- SharedPreferences
 
 ### Architecture
 MVVM (Model View ViewModel) Architecture Pattern in Android
