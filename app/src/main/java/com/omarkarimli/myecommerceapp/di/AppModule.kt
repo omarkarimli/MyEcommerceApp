@@ -6,6 +6,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import java.text.NumberFormat
+import java.util.Locale
 import javax.inject.Singleton
 
 @Module
@@ -36,4 +38,12 @@ object AppModule {
     @Singleton
     @Provides
     fun provideApplicationContext(app: Application): Context = app
+
+    @Singleton
+    @Provides
+    fun provideNumberFormat(): NumberFormat {
+        val locale = Locale.getDefault()
+        val numberFormat = NumberFormat.getInstance(locale)
+        return numberFormat
+    }
 }

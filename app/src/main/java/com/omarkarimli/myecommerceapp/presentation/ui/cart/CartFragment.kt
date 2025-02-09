@@ -14,9 +14,14 @@ import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.goneItem
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.NumberFormat
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CartFragment : Fragment() {
+
+    @Inject
+    lateinit var provideNumberFormat: NumberFormat
 
     val adapter = CartProductAdapter()
 
@@ -77,7 +82,7 @@ class CartFragment : Fragment() {
         }
 
         viewModel.totalCartPrice.observe(viewLifecycleOwner) {
-            binding.textViewTotalCartPrice.text = "$$it"
+            binding.textViewTotalCartPrice.text = "$" + provideNumberFormat.parse(String.format("%.2f", it))
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {

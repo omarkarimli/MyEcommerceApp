@@ -11,12 +11,15 @@ import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.utils.Constants
 import kotlinx.coroutines.tasks.await
 import java.io.Serializable
+import java.text.NumberFormat
+import java.util.Locale
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val provideAuth: FirebaseAuth,
-    private val provideFirestore: FirebaseFirestore
+    private val provideFirestore: FirebaseFirestore,
+    private val provideNumberFormat: NumberFormat
 ) : RemoteDataSource {
 
     override suspend fun fetchProducts() : List<ProductModel> {
@@ -24,14 +27,15 @@ class RemoteDataSourceImpl @Inject constructor(
             .collection(Constants.PRODUCTS)
             .get()
             .await()
-
         var productList = document.toObjects(ProductModel::class.java)
+
         productList = productList.map { productModel ->
             productModel.copy(
-                originalPrice = productModel.originalPrice.toString().replace(",",".").toDoubleOrNull() ?: 0.0,
+                originalPrice = provideNumberFormat.parse(String.format("%.2f", productModel.originalPrice))?.toDouble(),
                 isBookmarked = fetchBookmarkedIds().any { it == productModel.id },
                 numberOfProduct = 1,
-                discountedPrice = String.format("%.2f", productModel.originalPrice!! - (productModel.originalPrice * productModel.discount!! / 100)).toDouble(),
+                discountedPrice = provideNumberFormat.parse(String.format("%.2f", (productModel.originalPrice!! - (productModel.originalPrice * productModel.discount!! / 100))))
+                    ?.toDouble() ?: 0.0,
                 totalPrice = productModel.discountedPrice,
             )
         }
