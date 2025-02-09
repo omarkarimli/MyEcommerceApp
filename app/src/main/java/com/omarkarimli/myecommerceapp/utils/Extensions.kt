@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.omarkarimli.myecommerceapp.R
 import com.squareup.picasso.Picasso
+import java.math.RoundingMode
 
 fun View.visibleItem() {
     this.visibility = View.VISIBLE

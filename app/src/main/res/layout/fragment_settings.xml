@@ -193,43 +193,6 @@
                 android:layout_height="wrap_content"
                 app:dividerColor="?attr/colorOutlineVariant" />
 
-            <!-- Language -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/baseline_language_24"
-                    app:tint="?colorOnSecondaryContainer" />
-
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/language"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                    android:textColor="?colorOnSecondaryContainer" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/baseline_arrow_forward_24"
-                    app:tint="?colorOnSecondaryContainer" />
-
-            </LinearLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dividerColor="?attr/colorOutlineVariant" />
-
             <!-- Change Password -->
             <LinearLayout
                 android:id="@+id/container_change_password"

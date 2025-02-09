@@ -9,18 +9,33 @@ import com.omarkarimli.myecommerceapp.data.source.local.LocalDataSource
 import com.omarkarimli.myecommerceapp.domain.models.CategoryModel
 import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.utils.Constants
+import com.omarkarimli.myecommerceapp.utils.roundDouble
 import kotlinx.coroutines.tasks.await
 import java.io.Serializable
-import java.text.NumberFormat
-import java.util.Locale
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val provideAuth: FirebaseAuth,
     private val provideFirestore: FirebaseFirestore,
-    private val provideNumberFormat: NumberFormat
 ) : RemoteDataSource {
+
+    override suspend fun getProductById(id: Int): ProductModel {
+        val document = provideFirestore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.ID, id)
+            .get()
+            .await()
+
+        var productModel = document.documents[0].toObject(ProductModel::class.java)!!
+        productModel = productModel.copy(
+            isBookmarked = fetchBookmarkedIds().any { it == productModel.id },
+            numberOfProduct = 1,
+            originalPrice = roundDouble(productModel.originalPrice!!),
+            discountedPrice = roundDouble((productModel.originalPrice!! - (productModel.originalPrice!! * productModel.discount!! / 100))),
+            totalPrice = roundDouble(productModel.discountedPrice)
+        )
+        return productModel
+    }
 
     override suspend fun fetchProducts() : List<ProductModel> {
         val document = provideFirestore
@@ -31,12 +46,11 @@ class RemoteDataSourceImpl @Inject constructor(
 
         productList = productList.map { productModel ->
             productModel.copy(
-                originalPrice = provideNumberFormat.parse(String.format("%.2f", productModel.originalPrice))?.toDouble(),
                 isBookmarked = fetchBookmarkedIds().any { it == productModel.id },
                 numberOfProduct = 1,
-                discountedPrice = provideNumberFormat.parse(String.format("%.2f", (productModel.originalPrice!! - (productModel.originalPrice * productModel.discount!! / 100))))
-                    ?.toDouble() ?: 0.0,
-                totalPrice = productModel.discountedPrice,
+                originalPrice = roundDouble(productModel.originalPrice!!),
+                discountedPrice = roundDouble((productModel.originalPrice - (productModel.originalPrice * productModel.discount!! / 100))),
+                totalPrice = roundDouble(productModel.discountedPrice)
             )
         }
 
@@ -107,22 +121,6 @@ class RemoteDataSourceImpl @Inject constructor(
             .document(provideAuth.currentUser?.uid ?: "error")
             .get()
             .await()
-
-    override suspend fun getProductById(id: Int): ProductModel {
-        val document = provideFirestore.collection(Constants.PRODUCTS)
-            .whereEqualTo(Constants.ID, id)
-            .get()
-            .await()
-
-        var productModel = document.documents[0].toObject(ProductModel::class.java)!!
-        productModel = productModel.copy(
-            isBookmarked = fetchBookmarkedIds().any { it == productModel.id },
-            numberOfProduct = 1,
-            discountedPrice = productModel.originalPrice!! - (productModel.originalPrice!! * productModel.discount!! / 100),
-            totalPrice = productModel.discountedPrice,
-        )
-        return productModel
-    }
 
     override suspend fun loginUserAccount(isChecked: Boolean, email: String, password: String): AuthResult =
         provideAuth

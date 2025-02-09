@@ -21,6 +21,7 @@ import com.omarkarimli.myecommerceapp.adapters.ColorAdapter
 import com.omarkarimli.myecommerceapp.adapters.ImagePagerAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentProductBinding
 import com.omarkarimli.myecommerceapp.utils.Constants
+import com.omarkarimli.myecommerceapp.utils.roundDouble
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -153,11 +154,11 @@ class ProductFragment : Fragment() {
         }
 
         viewModel.totalOriginalPrice.observe(viewLifecycleOwner) {
-            binding.textViewPriceOriginal.text = "$$it"
+            binding.textViewPriceOriginal.text = "$${roundDouble(it)}"
         }
 
         viewModel.totalDiscountedPrice.observe(viewLifecycleOwner) {
-            binding.textViewPriceDiscounted.text = "$$it"
+            binding.textViewPriceDiscounted.text = "$${roundDouble(it)}"
         }
     }
 }

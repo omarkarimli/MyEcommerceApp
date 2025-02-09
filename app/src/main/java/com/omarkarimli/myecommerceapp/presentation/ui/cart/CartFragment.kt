@@ -12,16 +12,12 @@ import com.omarkarimli.myecommerceapp.adapters.CartProductAdapter
 import com.omarkarimli.myecommerceapp.databinding.FragmentCartBinding
 import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.goneItem
+import com.omarkarimli.myecommerceapp.utils.roundDouble
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.NumberFormat
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class CartFragment : Fragment() {
-
-    @Inject
-    lateinit var provideNumberFormat: NumberFormat
 
     val adapter = CartProductAdapter()
 
@@ -82,7 +78,7 @@ class CartFragment : Fragment() {
         }
 
         viewModel.totalCartPrice.observe(viewLifecycleOwner) {
-            binding.textViewTotalCartPrice.text = "$" + provideNumberFormat.parse(String.format("%.2f", it))
+            binding.textViewTotalCartPrice.text = "$${roundDouble(it)}"
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {

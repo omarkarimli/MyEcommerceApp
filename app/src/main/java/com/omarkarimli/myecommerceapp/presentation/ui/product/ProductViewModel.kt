@@ -115,9 +115,8 @@ class ProductViewModel @Inject constructor(
         val currentTotalOriginalPrice = product.value?.originalPrice!! * numberOfProduct.value!!.toDouble()
         val currentTotalDiscountedPrice = product.value?.discountedPrice!! * numberOfProduct.value!!.toDouble()
 
-        // Round to 2 decimal places
-        totalOriginalPrice.value = String.format("%.2f", currentTotalOriginalPrice).toDouble()
-        totalDiscountedPrice.value = String.format("%.2f", currentTotalDiscountedPrice).toDouble()
+        totalOriginalPrice.value = currentTotalOriginalPrice
+        totalDiscountedPrice.value = currentTotalDiscountedPrice
 
         Log.e("555", totalDiscountedPrice.value.toString())
 
