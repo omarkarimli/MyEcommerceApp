@@ -3,6 +3,7 @@ Let me introduce the project:
 
 MyEcommerceApp is an **Android MDC** e-commerce application built with **Kotlin**.
 It follows MVVM Architecture and implements Clean Code principles.
+This app also implements Light & Dark Mode Theme.
 
 ### 🛠 Built With:
 - MVVM with Clean Architecture
