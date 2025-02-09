@@ -78,7 +78,7 @@ class CartFragment : Fragment() {
         }
 
         viewModel.totalCartPrice.observe(viewLifecycleOwner) {
-            binding.textViewTotalCartPrice.text = "$${roundDouble(it)}"
+            binding.textViewTotalCartPrice.text = "$$it"
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {

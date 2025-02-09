@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.omarkarimli.myecommerceapp.domain.models.ProductModel
 import com.omarkarimli.myecommerceapp.domain.repository.MyEcommerceRepository
+import com.omarkarimli.myecommerceapp.utils.roundDouble
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class CartViewModel @Inject constructor(
     }
 
     fun calculateTotalCartPrice(cartProductList: List<ProductModel>) {
-        totalCartPrice.value = cartProductList.sumOf { it.totalPrice }
+        totalCartPrice.value = roundDouble(cartProductList.sumOf { it.totalPrice })
     }
 
     fun fetchCartProducts() {
@@ -52,7 +53,7 @@ class CartViewModel @Inject constructor(
 
                 val cartProductCopy = cartProduct.copy(
                     numberOfProduct = numberOfProduct,
-                    totalPrice = String.format("%.2f", totalProductPrice).toDouble()
+                    totalPrice = roundDouble(totalProductPrice)
                 )
                 provideRepo.updateProductLocally(cartProductCopy)
                 cartProductList.value = provideRepo.getAllProductsFromLocal()
