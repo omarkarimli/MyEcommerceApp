@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose\nwhat you want"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="?colorOnSecondaryContainer"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
         android:layout_marginStart="32dp"

@@ -28,6 +28,7 @@ class RemoteDataSourceImpl @Inject constructor(
         var productList = document.toObjects(ProductModel::class.java)
         productList = productList.map { productModel ->
             productModel.copy(
+                originalPrice = productModel.originalPrice.toString().replace(",",".").toDoubleOrNull() ?: 0.0,
                 isBookmarked = fetchBookmarkedIds().any { it == productModel.id },
                 numberOfProduct = 1,
                 discountedPrice = String.format("%.2f", productModel.originalPrice!! - (productModel.originalPrice * productModel.discount!! / 100)).toDouble(),

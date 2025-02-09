@@ -67,7 +67,7 @@
             android:text="$85.0"
             android:fontFamily="@font/poppins_regular"
             android:textColor="?colorOnSurfaceVariant"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:layout_marginStart="8dp"/>
 
     </LinearLayout>

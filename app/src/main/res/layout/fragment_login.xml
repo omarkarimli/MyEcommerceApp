@@ -17,95 +17,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:paddingTop="96dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/back"
+        app:layout_constraintBottom_toTopOf="@id/dontHaveAccountLayout" >
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign in to Your Account"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?colorOnSecondaryContainer"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Email field -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_email"
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="42dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
-            app:suffixText="@string/email_suffix" >
+            android:layout_height="wrap_content" >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/email_address"
-                android:fontFamily="@font/poppins_regular"
-                android:inputType="textEmailAddress" />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign in to Your Account"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="?colorOnSecondaryContainer"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Password field -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayout_email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
-            app:endIconMode="password_toggle" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_password"
+            <!-- Email field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="password"
-                android:hint="@string/password"
+                android:layout_marginTop="42dp"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+                app:suffixText="@string/email_suffix" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/email_address"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+                app:endIconMode="password_toggle" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="password"
+                    android:hint="@string/password"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Remember me checkbox -->
+            <CheckBox
+                android:layout_gravity="start"
+                android:id="@+id/rememberMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_me"
                 android:fontFamily="@font/poppins_regular"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Remember me checkbox -->
-        <CheckBox
-            android:id="@+id/rememberMe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remember_me"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="?colorOnSecondaryContainer"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayout_password"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp" />
-
-        <!-- Sign in button Container -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/signInButtonContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rememberMe"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" >
+                android:textColor="?colorOnSecondaryContainer"
+                android:layout_marginTop="16dp" />
 
             <!-- Sign in button -->
             <Button
+                android:layout_marginTop="16dp"
                 android:id="@+id/signInButton"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
@@ -116,17 +105,14 @@
                 android:backgroundTint="?colorOnSurface"
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Don't have an account -->
     <LinearLayout
+        android:id="@+id/dontHaveAccountLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

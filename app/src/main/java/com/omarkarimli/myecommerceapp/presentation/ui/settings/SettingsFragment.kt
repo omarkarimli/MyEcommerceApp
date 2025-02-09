@@ -8,15 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.omarkarimli.myecommerceapp.R
 import com.omarkarimli.myecommerceapp.databinding.FragmentSettingsBinding
-import com.omarkarimli.myecommerceapp.utils.Constants
 import com.omarkarimli.myecommerceapp.utils.goneItem
 import com.omarkarimli.myecommerceapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,10 +62,15 @@ class SettingsFragment : Fragment() {
 
         binding.switchNotifications.setOnCheckedChangeListener { buttonView, isChecked ->
             viewModel.changeNotificationState(isChecked)
+
+            changeSwitchUI(binding.switchNotifications, isChecked)
         }
 
         binding.switchDarkMode.setOnCheckedChangeListener { buttonView, isChecked ->
             viewModel.changeDarkModeState(isChecked)
+
+            changeSwitchUI(binding.switchDarkMode, isChecked)
+            applyTheme(isChecked)
         }
 
         observeData()
@@ -98,21 +102,40 @@ class SettingsFragment : Fragment() {
             binding.textViewNameSurname.text = nameSurname
         }
 
-        viewModel.isNoti.observe(viewLifecycleOwner) {
-            binding.switchNotifications.isChecked = it
+        viewModel.isNoti.observe(viewLifecycleOwner) { isChecked ->
+            binding.switchNotifications.isChecked = isChecked
         }
 
-        viewModel.isDarkMode.observe(viewLifecycleOwner) {
-            binding.switchDarkMode.isChecked = it
-
-            // Apply theme
-            AppCompatDelegate.setDefaultNightMode(
-                if (it) AppCompatDelegate.MODE_NIGHT_YES
-                else AppCompatDelegate.MODE_NIGHT_NO
-            )
+        viewModel.isDarkMode.observe(viewLifecycleOwner) { isChecked ->
+            binding.switchDarkMode.isChecked = isChecked
         }
     }
 
+    private fun applyTheme(isChecked: Boolean) {
+        AppCompatDelegate.setDefaultNightMode(
+            if (isChecked) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        )
+    }
+
+    private fun changeSwitchUI(switch: MaterialSwitch, isChecked: Boolean) {
+        val thumbTint = MaterialColors.getColor(switch,
+            if (isChecked)
+                com.google.android.material.R.attr.colorSecondaryContainer
+            else
+                com.google.android.material.R.attr.colorOnSecondaryContainer
+        )
+
+        val trackTint = MaterialColors.getColor(switch,
+            if (isChecked)
+                com.google.android.material.R.attr.colorOnSecondaryContainer
+            else
+                com.google.android.material.R.attr.colorSecondaryContainer
+        )
+
+        switch.thumbTintList = ColorStateList.valueOf(thumbTint)
+        switch.trackTintList = ColorStateList.valueOf(trackTint)
+    }
 
     private fun buildAlertDialog(context: Context) {
         MaterialAlertDialogBuilder(context)
