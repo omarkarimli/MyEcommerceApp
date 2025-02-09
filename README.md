@@ -23,7 +23,7 @@ It follows MVVM Architecture and implements Clean Code principles.
 ### Architecture
 MVVM (Model View ViewModel) Architecture Pattern in Android
 
-![mvvm](https://github.com/user-attachments/assets/4d3d3fae-41ef-49ef-8402-1d2fe8900f35)
+<img src="https://github.com/user-attachments/assets/4d3d3fae-41ef-49ef-8402-1d2fe8900f35" alt="mvvm" height="256">
 
 ### 📷 Screens
 
