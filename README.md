@@ -19,3 +19,5 @@ It follows MVVM Architecture and implements Clean Code principles.
 - Firestore
 - Picasso
 - DotsIndicator
+
+### 📷 Screens
